@@ -9,7 +9,11 @@ Route::get('/', [PagesController::class, 'index']);
 
 // internship
 Route::get('/internship', [PagesController::class, 'internship']);
-Route::get('/internship/{slug}', [PagesController::class, 'internship_detail']);
+Route::get('/internship/{internship:slug}', [PagesController::class, 'internship_detail']);
+
+// company
+Route::get('/company', [PagesController::class, 'company']);
+Route::get('/company/{company:slug}', [PagesController::class, 'company_detail']);
 
 // network
 Route::get('/mynetwork', [PagesController::class, 'mynetwork']);

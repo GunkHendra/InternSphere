@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('internships', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('excerpt');
             $table->text('description');
             $table->timestamp('published_at')->nullable();
-            // link to company id
+            $table->foreignId('company_id');
             $table->timestamps();
         });
     }

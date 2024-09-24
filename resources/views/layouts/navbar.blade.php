@@ -7,6 +7,7 @@
       <ul class="flex justify-between space-x-4">
         <li><a href="/" class="{{ ($title === "Home") ? "text-black" : "text-slate-500" }}">Home</a></li>
         <li><a href="/internship" class="{{ ($title === "Internship") ? "text-black" : "text-slate-500" }}">Internship</a></li>
+        <li><a href="/company" class="{{ ($title === "Company") ? "text-black" : "text-slate-500" }}">Company</a></li>
         <li><a href="/mynetwork" class="{{ ($title === "My Network") ? "text-black" : "text-slate-500" }}">My Network</a></li>
         <li><a href="/message" class="{{ ($title === "Message") ? "text-black" : "text-slate-500" }}">Message</a></li>
         <li><a href="/profile" class="{{ ($title === "Profile") ? "text-black" : "text-slate-500" }}">Profile</a></li>
