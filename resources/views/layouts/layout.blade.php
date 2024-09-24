@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ config('app.name', 'InternSphere') }} | {{ $title }}</title>
+        <link rel="icon" type="image/x-icon" href="assets/Logo.png">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        @vite('resources/css/app.css')
+    </head>
+    <body class="font-poppins pt-20">
+        @include('layouts/navbar')
+        <div class="px-6">
+            @yield('content')
+        </div>
+    </body>
+</html>
