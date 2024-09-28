@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('internships', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('company_name');
             $table->string('slug')->unique();
-            $table->text('excerpt');
-            $table->text('description');
-            $table->timestamp('published_at')->nullable();
-            $table->foreignId('company_id');
+            $table->string('focus');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('internships');
+        Schema::dropIfExists('companies');
     }
 };

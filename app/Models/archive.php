@@ -7,13 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Internship extends Model
 {
-
-    $intern::create([
-        'title' => 'Apple Internship',
-        'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi officia assumenda sit perferendis rem aliquam. Fugit nesciunt quas id minus repellendus veniam commodi eum pariatur optio molestiae quisquam officia asperiores veritatis quis nobis inventore eligendi dolore fugiat esse, voluptatem incidunt, praesentium temporibus.',
-        'description' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi officia assumenda sit perferendis rem aliquam. Fugit nesciunt quas id minus repellendus veniam commodi eum pariatur optio molestiae quisquam officia asperiores veritatis quis nobis inventore eligendi dolore fugiat esse, voluptatem incidunt, praesentium temporibus. Culpa aliquam ad possimus odio exercitationem quas magnam, ipsum suscipit, voluptatum obcaecati reprehenderit. Magni alias aliquid commodi ex nostrum maiores. Rem accusamus iusto temporibus, enim neque dolores rerum repellat asperiores quae dolore! Voluptate veritatis enim, excepturi praesentium similique illo quae magnam perferendis et non expedita nihil cumque? Exercitationem, placeat aliquam! Praesentium quod pariatur ipsa, perferendis, perspiciatis minus dolorem quibusdam animi delectus fugit nobis deserunt ad ratione blanditiis? Libero, quia expedita perferendis, error dicta deleniti molestiae praesentium quos alias mollitia est, eos ipsum veniam quisquam eum tenetur dolores consequatur excepturi! Veritatis, eos. Nemo magnam expedita et quia ad facere ut neque, velit aperiam inventore aliquam id odio delectus esse.</p>'
-    ])
-
     use HasFactory;
 
     private static $internship = [

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Internship;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Company extends Model
 {
@@ -11,4 +13,9 @@ class Company extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function internship() : HasMany
+    {
+        return $this->hasMany(Internship::class);
+    }
 }

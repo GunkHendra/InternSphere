@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Internship;
 use App\Models\Company;
+use App\Models\Education;
+use App\Models\Internship;
+use App\Models\Requirement;
+use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     public function index(){
         return view('pages/index', [
             "title" => "Home",
-            "internship" => Internship::all()
+            "internship" => Internship::with(['company',])->latest()->limit(5)->get()
         ]);
     }
 
     public function internship(){
         return view('pages/internship', [
             "title" => "Internship",
-            "internship" => Internship::all()
+            "internship" => Internship::with(['company',])->latest()->get()
         ]);
     }
 
     public function internship_detail(Internship $internship){
         return view('pages/internship_detail', [
             "title" => "Internship",
-            "internship" => $internship
+            "internship" => $internship,
+            "requirement" => Requirement::where('internship_id', $internship->id)->get()
         ]);
     }
 
@@ -40,7 +43,7 @@ class PagesController extends Controller
         return view('pages/company_detail', [
             "title" => "Company",
             "company" => $company,
-            "internship" => Internship::where('company_id', $company->id)->get()
+            "internship" => Internship::where('company_id', $company->id)->with(['company',])->latest()->get()
         ]);
     }
 
