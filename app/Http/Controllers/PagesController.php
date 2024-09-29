@@ -7,6 +7,8 @@ use App\Models\Education;
 use App\Models\Internship;
 use App\Models\Requirement;
 use Illuminate\Http\Request;
+use App\Models\EducationLevel;
+use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
@@ -28,7 +30,7 @@ class PagesController extends Controller
         return view('pages/internship_detail', [
             "title" => "Internship",
             "internship" => $internship,
-            "requirement" => Requirement::where('internship_id', $internship->id)->get()
+            "requirement" => Requirement::where('internship_id', $internship->id)->first()
         ]);
     }
 

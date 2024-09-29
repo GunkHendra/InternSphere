@@ -2,63 +2,63 @@
 
 namespace Database\Seeders;
 
-use App\Models\Education;
+use App\Models\EducationLevel;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class EducationSeeder extends Seeder
+class EducationLevelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'SMA',
             'education_year' => 1
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'SMA',
             'education_year' => 2
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'SMA',
             'education_year' => 3
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'SMK',
             'education_year' => 1
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'SMK',
             'education_year' => 2
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'SMK',
             'education_year' => 3
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'University',
             'education_year' => 1
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'University',
             'education_year' => 2
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'University',
             'education_year' => 3
         ]);
 
-        Education::create([
+        EducationLevel::create([
             'education_level' => 'University',
             'education_year' => 4
         ]);

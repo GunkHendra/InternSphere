@@ -25,17 +25,17 @@ class Internship extends Model
         'id'
     ];
 
-    public function company() : BelongsTo
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function appliance() : HasMany
+    public function appliance()
     {
         return $this->hasMany(Appliance::class);
     }
 
-    public function requirement_detail() : HasMany
+    public function requirement()
     {
         return $this->hasMany(Requirement::class);
     }

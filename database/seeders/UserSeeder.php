@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Education;
+use App\Models\EducationLevel;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,7 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->recycle([
-            Education::all()
+            EducationLevel::all()
         ])->create();
     }
 }

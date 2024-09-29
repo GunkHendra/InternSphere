@@ -1,3 +1,7 @@
+@php
+    $addon = ['st', 'nd', 'rd', 'th'];
+@endphp
+
 @extends('layouts/layout')
 
 @section('content')
@@ -11,6 +15,7 @@
     <div class="border p-4"> 
         <a class="font-medium text-1xl">Education Requirement</a>
         <hr>
-        <a href="">{{ $requirement->education_id }}, {{ $requirement }} Year</a>
+        <a href="">{{ $requirement->education->education_level }}, {{ $requirement->education->education_year }}{{ $addon[$requirement->education->education_year - 1] }}
+        Year.</a>
     </div>
 @endsection

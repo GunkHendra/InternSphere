@@ -9,10 +9,12 @@ use App\Models\Appliance;
 use App\Models\Education;
 use App\Models\Internship;
 use App\Models\Requirement;
+use App\Models\EducationLevel;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CompanySeeder;
 use Database\Seeders\EducationSeeder;
+use Database\Seeders\EducationLevelSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,7 +30,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call([CompanySeeder::class, EducationSeeder::class, UserSeeder::class]);
+        $this->call([CompanySeeder::class, EducationLevelSeeder::class, UserSeeder::class]);
         
         Internship::factory(10)->recycle([
             Company::all()
@@ -41,7 +43,7 @@ class DatabaseSeeder extends Seeder
 
         Requirement::factory(10)->recycle([
             Internship::all(),
-            Education::all()
+            EducationLevel::all()
         ])->create();
     }
 }

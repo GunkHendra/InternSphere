@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Education;
 use App\Models\Internship;
+use App\Models\EducationLevel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,13 +16,13 @@ class Requirement extends Model
         'id'
     ];
 
-    public function internship() : BelongsTo
+    public function internship()
     {
         return $this->belongsTo(Internship::class);
     }
 
-    public function education() : BelongsTo
+    public function education()
     {
-        return $this->belongsTo(Education::class);
+        return $this->belongsTo(EducationLevel::class, 'education_level_id', 'id');
     }
 }

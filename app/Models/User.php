@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Appliance;
+use App\Models\EducationLevel;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,13 +52,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function appliance() : HasMany
+    public function appliance()
     {
         return $this->hasMany(Appliance::class);
     }
 
-    public function education() : BelongsTo
+    public function education()
     {
-        return $this->belongsTo(Education::class);
+        return $this->belongsTo(EducationLevel::class);
     }
 }

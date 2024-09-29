@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Education;
 use App\Models\Internship;
+use App\Models\EducationLevel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class RequirementFactory extends Factory
     {
         return [
             'internship_id' => Internship::factory(),
-            'education_id' => Education::factory(),
+            'education_level_id' => EducationLevel::factory(),
         ];
     }
 }

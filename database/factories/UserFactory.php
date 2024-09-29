@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Education;
 use Illuminate\Support\Str;
+use App\Models\EducationLevel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,7 +28,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'age' => fake()->numberBetween(15, 20),
-            'education_id' => Education::factory(),
+            'education_level_id' => EducationLevel::factory(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

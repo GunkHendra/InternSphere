@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Education extends Model
+class EducationLevel extends Model
 {
     use HasFactory;
 
@@ -13,12 +13,12 @@ class Education extends Model
         'id'
     ];
 
-    public function requirement() : HasMany
+    public function requirement()
     {
-        return $this->hasMany(Requirement::class);
+        return $this->hasMany(Requirement::class, 'education_level_id', 'id');
     }
 
-    public function user() : HasMany
+    public function user()
     {
         return $this->hasMany(User::class);
     }

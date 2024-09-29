@@ -14,7 +14,7 @@ class Company extends Model
         'id'
     ];
 
-    public function internship() : HasMany
+    public function internship()
     {
         return $this->hasMany(Internship::class);
     }
