@@ -2,7 +2,9 @@
 
 use App\Models\Internship;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RegisterController;
 
 // routing
 // home
@@ -24,3 +26,8 @@ Route::get('/message', [PagesController::class, 'message']);
 
 // profile
 Route::get('/profile', [PagesController::class, 'profile']);
+
+// login register
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);

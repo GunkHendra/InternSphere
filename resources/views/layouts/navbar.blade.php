@@ -10,7 +10,11 @@
         <li><a href="/company" class="{{ ($title === "Company") ? "text-black" : "text-slate-500" }}">Company</a></li>
         <li><a href="/mynetwork" class="{{ ($title === "My Network") ? "text-black" : "text-slate-500" }}">My Network</a></li>
         <li><a href="/message" class="{{ ($title === "Message") ? "text-black" : "text-slate-500" }}">Message</a></li>
-        <li><a href="/profile" class="{{ ($title === "Profile") ? "text-black" : "text-slate-500" }}">Profile</a></li>
+        @if (0)
+          <li><a href="/profile" class="{{ ($title === "Profile") ? "text-black" : "text-slate-500" }}">Profile</a></li>
+        @else
+          <li><a href="/login" class="{{ ($title === "Login") ? "text-black" : "text-slate-500" }}">Login</a></li>
+        @endif
       </ul>
     </div>
 </nav>

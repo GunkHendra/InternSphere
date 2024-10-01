@@ -62,5 +62,10 @@ class EducationLevelSeeder extends Seeder
             'education_level' => 'University',
             'education_year' => 4
         ]);
+
+        EducationLevel::create([
+            'education_level' => 'University',
+            'education_year' => 5
+        ]);
     }
 }

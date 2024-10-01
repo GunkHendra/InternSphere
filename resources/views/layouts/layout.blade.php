@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         @vite('resources/css/app.css')
     </head>
-    <body class="font-poppins pt-20">
+    <body class="bg-gray-100 font-poppins pt-20 w-full h-full">
         @include('layouts/navbar')
         <div class="px-6">
             @yield('content')

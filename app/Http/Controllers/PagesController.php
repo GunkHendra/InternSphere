@@ -20,9 +20,16 @@ class PagesController extends Controller
     }
 
     public function internship(){
+
+        $internship = Internship::with(['company'])->latest();
+
+        if (request('search')){
+            $internship->where('title', 'like', '%' . request('search') . '%')->orWhere('description', 'like', '%' . request('search') . '%');
+        }
+
         return view('pages/internship', [
             "title" => "Internship",
-            "internship" => Internship::with(['company',])->latest()->get()
+            "internship" => $internship->get()
         ]);
     }
 

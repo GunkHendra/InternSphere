@@ -41,9 +41,18 @@ class DatabaseSeeder extends Seeder
             Internship::all()
         ])->create();
 
-        Requirement::factory(10)->recycle([
-            Internship::all(),
-            EducationLevel::all()
-        ])->create();
+        // Requirement::factory(10)->recycle([
+        //     Internship::all(),
+        //     EducationLevel::all()
+        // ])->create();
+        
+        $internships = Internship::all();
+        $educations = EducationLevel::all();
+        foreach ($internships as $internship) {
+            Requirement::create([
+                'internship_id' => $internship->id,
+                'education_level_id' => $educations->random()->id,
+            ]);
+        }
     }
 }
