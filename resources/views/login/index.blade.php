@@ -1,7 +1,3 @@
-@php
-    $addon = ['st', 'nd', 'rd', 'th'];
-@endphp
-
 @extends('layouts/layout')
 
 @section('content')
