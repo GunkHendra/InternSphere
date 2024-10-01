@@ -8,7 +8,7 @@
             <li><a class="text-slate-500">Contact : {{ $company->email }}</a></li>
         </div>
     </ul>
-    <div class="flex p-4 justify-center"><h1 class="text-xl">Internship List</h1></div>
+    <div class="flex p-4 justify-center"><h1 class="text-3xl">Internship List</h1></div>
     <div>
         @include('layouts/internship_list')
         </ul>

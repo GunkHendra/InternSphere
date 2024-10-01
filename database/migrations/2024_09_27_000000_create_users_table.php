@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('age');
+            $table->unsignedInteger('age')->nullable()->default(null);
             $table->foreignId('education_level_id')->constrained(
                 table: 'education_levels', indexName: 'users_education_levels_id'
             );

@@ -15,11 +15,6 @@
     <div class="rounded-lg bg-white shadow-md p-4"> 
         <a class="font-medium text-1xl">Education Requirement</a>
         <hr>
-        <a href="">{{ $requirement->education->education_level }}, {{ $requirement->education->education_year }} @if ($addon[$requirement->education->education_year - 1] < 5)
-            {{ $addon[$requirement->education->education_year - 1] }}
-        @else
-            +
-        @endif
-        Year.</a>
+        <a href="">{{ $requirement->education->education_level }}, {{ $requirement->education->education_year }}{{ $addon[$requirement->education->education_year - 1] }} Year.</a>
     </div>
 @endsection

@@ -42,9 +42,15 @@ class PagesController extends Controller
     }
 
     public function company(){
+        $company = Company::latest();
+
+        if (request('search')){
+            $company->where('company_name', 'like', '%' . request('search') . '%')->orWhere('focus', 'like', '%' . request('search') . '%');
+        }
+
         return view('pages/company', [
             "title" => "Company",
-            "company" => Company::all()
+            "company" => $company->get(),
         ]);
     }
 
