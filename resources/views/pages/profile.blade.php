@@ -69,13 +69,15 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md mt-4">
+        <div class=" p-6 rounded-lg shadow-md mt-4 bg-black">
             <p>Social Media</p>
             <div class="flex space-x-4 mt-2">
-                <img class="w-6 h-6" src="assets/logo.png" alt="Invision">
-                <img class="w-6 h-6" src="assets/logo.png" alt="Sketch">
-                <img class="w-6 h-6" src="assets/logo.png" alt="Figma">
-                <img class="w-6 h-6" src="assets/logo.png" alt="Adobe XD">
+                <img class="w-6 h-6" src="assets/social/1.png" alt="Invision">
+                <img class="w-6 h-6" src="assets/social/2.png" alt="Invision">
+                <img class="w-6 h-6" src="assets/social/3.png" alt="Invision">
+                <img class="w-6 h-6" src="assets/social/4.png" alt="Invision">
+                <img class="w-6 h-6" src="assets/social/5.png" alt="Invision">
+
             </div>
         </div>
     </div>
