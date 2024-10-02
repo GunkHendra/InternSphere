@@ -15,7 +15,7 @@ class PagesController extends Controller
     public function index(){
         return view('pages/index', [
             "title" => "Home",
-            "internship" => Internship::with(['company',])->latest()->limit(5)->get()
+            "internship" => Internship::with(['company',])->latest()->limit(3)->get()
         ]);
     }
 

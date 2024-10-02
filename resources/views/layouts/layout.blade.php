@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('app.name', 'InternSphere') }} | {{ $title }}</title>
         <link rel="icon" type="image/x-icon" href="assets/Logo.png">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         @vite('resources/css/app.css')
     </head>
@@ -13,6 +12,9 @@
         @include('layouts/navbar')
         <div class="px-6">
             @yield('content')
+        </div>
+        <div class="mt-2">
+            @include('layouts/footer')
         </div>
     </body>
 </html>
