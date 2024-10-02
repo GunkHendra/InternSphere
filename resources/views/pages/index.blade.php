@@ -10,7 +10,4 @@
             </div>
         </div>
     </div>
-    <div>
-        @include('layouts/internship_list')
-    </div>
 @endsection
