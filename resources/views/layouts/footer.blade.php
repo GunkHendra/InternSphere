@@ -27,11 +27,11 @@
         </div>
         
         <ul class="flex justify-center items-center gap-6">
-            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/logoSocialMedia/instagram.png" alt="instagram"></a></li>
-            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/logoSocialMedia/facebook.png" alt="facebook"></a></li>
-            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/logoSocialMedia/twitter.png" alt="twitter"></a></li>
-            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/logoSocialMedia/youtube.png" alt="youtube"></a></li>
-            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/logoSocialMedia/tele.png" alt="telegram"></a></li>
+            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/social/instagram.png" alt="instagram"></a></li>
+            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/social/facebook.png" alt="facebook"></a></li>
+            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/social/twitter.png" alt="twitter"></a></li>
+            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/social/youtube.png" alt="youtube"></a></li>
+            <li><a href="/"><img class="max-w-8 max-h-8" src="assets/social/telegram.png" alt="telegram"></a></li>
         </ul>
 
         <div >
