@@ -31,17 +31,6 @@
             <small class="text-red-400">{{ $message }}</small>
         @enderror
       </div>
-      <div class="mb-6">
-        <label for="education" class="text-sm font-medium text-gray-700">Education</label>
-        <select name="education" id="education" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Enter your education" required>
-          @foreach ($education as $edu)
-            <option value="{{ $edu->id }}">{{ $edu->education_level }}, {{ $edu->education_year }}{{ $addon[$edu->education_year-1] }} Year</option>
-          @endforeach
-        </select>
-        @error('education')
-            <small class="text-red-400">{{ $message }}</small>
-        @enderror
-      </div>
       <input type="submit" class="w-full bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-lg" value="Register"></input>
     </form>
     <small>Already registered? <a href="/login" class="text-blue-500">Login now!</a></small>
