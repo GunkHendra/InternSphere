@@ -70,13 +70,13 @@
             </div>
         </div>
         <div class=" p-6 rounded-lg shadow-md mt-4 bg-black">
-            <p>Social Media</p>
-            <div class="flex space-x-4 mt-2">
-                <img class="w-6 h-6" src="assets/social/1.png" alt="Invision">
-                <img class="w-6 h-6" src="assets/social/2.png" alt="Invision">
-                <img class="w-6 h-6" src="assets/social/3.png" alt="Invision">
-                <img class="w-6 h-6" src="assets/social/4.png" alt="Invision">
-                <img class="w-6 h-6" src="assets/social/5.png" alt="Invision">
+            <p class="text-white">Social Media</p>
+            <div class="flex space-x-2">
+                <a href=""><img class="w-6 h-6" src="assets/social/facebook.png" alt="facebook">
+                <a href=""><img class="w-6 h-6" src="assets/social/twitter.png" alt="twitter"></a>
+                <a href=""><img class="w-6 h-6" src="assets/social/telegram.png" alt="telegram"></a>
+                <a href=""><img class="w-6 h-6" src="assets/social/youtube.png" alt="youtube"></a>
+                <a href=""><img class="w-6 h-6" src="assets/social/instagram.png" alt="instagram"></a></a>
 
             </div>
         </div>
