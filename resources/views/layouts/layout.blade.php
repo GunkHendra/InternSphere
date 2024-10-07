@@ -13,8 +13,11 @@
         <div class="px-6">
             @yield('content')
         </div>
+        @if (!request()->is('login') && !request()->is('register'))
         <div class="mt-2">
             @include('layouts/footer')
         </div>
+        @endif
+        
     </body>
 </html>
