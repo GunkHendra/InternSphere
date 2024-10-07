@@ -8,6 +8,8 @@
                 <a href="/about" class="text-8xl font-bold">{{ config('app.name') }}</a>
                 <p class="text-2xl">Where the internship waits for you.</p>
             </div>
+            <div>
+            </div>
         </div>
     </div>
 @endsection
