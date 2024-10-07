@@ -19,23 +19,29 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-5 grid-rows-3 h-[96vh] justify-center items-center">
-        <div class="col-span-2">
-            <img src="assets/illustration/discus.png" alt="discussion">
+    <div class="flex h-[100vh] justify-center items-center bg-black">
+        <div class="flex justify-start">
+            <img src="assets/illustration/discus.png" alt="">
         </div>
-        <div class="">
-            <img class="max-w-12 max-h-12" src="assets/icon/link black.png" alt="">
-            <img class="max-w-16 max-h-16" src="assets/icon/thumb black.png" alt="">
-            <img class="max-w-14 max-h-14" src="assets/icon/easy black.png" alt="">
-        </div>
-        <div class="col-span-2 gap-4">
-            <span class="text-4xl">Connects students with valuable internship opportunities.</span>
-            <span class="text-4xl">Find the perfect internship to match your skills and ambitions.</span>
-            <span class="text-4xl">Easy access to internships.</span>
+        <div class="text-white p-6">
+            <div class="space-y-10">
+                <div class="flex items-center gap-4">
+                    <img class="max-w-12 max-h-12" src="assets/icon/link.png" alt="">
+                    <span class="text-4xl">Connects students with valuable internship opportunities.</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <img class="max-w-16 max-h-16" src="assets/icon/thumb.png" alt="">
+                    <span class="text-4xl">Find the perfect internship to match your skills and ambitions.</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <img class="max-w-14 max-h-14" src="assets/icon/easy.png" alt="">
+                    <span class="text-4xl">Easy access to internships.</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="h-[100vh] ">
+    <div class="h-[100vh] pt-32">
         <div class="flex justify-start mb-6">
             <span class="text-3xl font-bold">Check out some of our internship.</span>
         </div>

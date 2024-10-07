@@ -9,5 +9,5 @@
             </button>
         </form>
     </div>
-    @include('layouts/internship_list')
+    @include('partials/internship_list')
 @endsection

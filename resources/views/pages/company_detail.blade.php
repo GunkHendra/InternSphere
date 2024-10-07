@@ -10,6 +10,6 @@
     </div>
     <div class="flex p-4 justify-center"><h1 class="text-3xl">Internship List</h1></div>
     <div>
-        @include('layouts/internship_list')
+        @include('partials/internship_list')
     </div>
 @endsection
