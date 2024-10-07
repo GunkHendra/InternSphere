@@ -1,4 +1,4 @@
-<div class="mt-10 h-100vh bg-black bottom-0">
+<div class="mt-10 h-100vh bg-black">
     <div class="flex items-center justify-between text-white h-20 p-6">
         <div class="flex items-center gap-4">
             <img class="max-w-8 max-h-8" src="assets/icon/link.png" alt="">

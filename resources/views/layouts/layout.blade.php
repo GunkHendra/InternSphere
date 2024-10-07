@@ -8,14 +8,16 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-gray-100 font-poppins pt-20 w-full h-full">
-        @include('layouts/navbar')
+    <body class="bg-gray-100 font-poppins pt-20 w-full h-full flex flex-col min-h-screen">
+        @include('partials/navbar')
+
         <div class="px-6">
             @yield('content')
         </div>
+        
         @if (!request()->is('login') && !request()->is('register'))
-        <div class="mt-2">
-            @include('layouts/footer')
+        <div class="mt-32">
+            @include('partials/footer')
         </div>
         @endif
         
