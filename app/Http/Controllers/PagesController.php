@@ -71,7 +71,8 @@ class PagesController extends Controller
 
     public function message(){
         return view('pages/message', [
-            "title" => "Message"
+            "title" => "Message",
+            "company" => Company::all(),
         ]);
     }
 }
