@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <div class=" p-6 rounded-lg shadow-md mt-4 bg-black">
+    <div class="p-6 rounded-lg shadow-md mt-4 bg-black">
         <p class="text-white">Social Media</p>
         <div class="flex space-x-4 mt-2">
             <img class="w-6 h-6" src="/assets/icon/instagram.png" alt="Instagram">
@@ -76,6 +76,12 @@
             <img class="w-6 h-6" src="/assets/icon/twitter.png" alt="Twitter">
             <img class="w-6 h-6" src="/assets/icon/youtube.png" alt="Youtube">
         </div>
+    </div>
+    <div class="flex justify-end">
+        <form action="logout" method="POST">
+            @csrf
+            <button class="text-white px-4 py-2 rounded-lg shadow-md mt-4 bg-red-600">Logout</button>
+        </form>
     </div>
 </div>
 @endsection

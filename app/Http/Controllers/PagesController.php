@@ -74,10 +74,4 @@ class PagesController extends Controller
             "title" => "Message"
         ]);
     }
-
-    public function profile(){
-        return view('pages/profile', [
-            "title" => "Profile"
-        ]);
-    }
 }
