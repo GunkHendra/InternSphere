@@ -8,13 +8,13 @@
         <li><a href="/" class="{{ ($title === "Home") ? "text-white" : "text-slate-400" }}">Home</a></li>
         <li><a href="/internship" class="{{ ($title === "Internship") ? "text-white" : "text-slate-400" }}">Internship</a></li>
         <li><a href="/company" class="{{ ($title === "Company") ? "text-white" : "text-slate-400" }}">Company</a></li>
-        <li><a href="/mynetwork" class="{{ ($title === "My Network") ? "text-white" : "text-slate-400" }}">My Network</a></li>
+        {{-- <li><a href="/mynetwork" class="{{ ($title === "My Network") ? "text-white" : "text-slate-400" }}">My Network</a></li> --}}
         <li><a href="/message" class="{{ ($title === "Message") ? "text-white" : "text-slate-400" }}">Message</a></li>
-        @if (0)
+        @auth
           <li><a href="/profile" class="{{ ($title === "Profile") ? "text-white" : "text-slate-400" }}">Profile</a></li>
         @else
           <li><a href="/login" class="{{ ($title === "Login") ? "text-white" : "text-slate-400" }}">Login</a></li>
-        @endif
+        @endauth
       </ul>
     </div>
 </nav>

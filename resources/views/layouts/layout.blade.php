@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('app.name', 'InternSphere') }} | {{ $title }}</title>
-        <link rel="icon" type="image/x-icon" href="assets/Logo.png">
+        <link rel="icon" type="image/x-icon" href="/assets/Logo.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         @vite('resources/css/app.css')
     </head>
@@ -15,11 +15,10 @@
             @yield('content')
         </div>
         
-        @if (!request()->is('login') && !request()->is('register'))
+        @if (!request()->is('login') && !request()->is('register') && !request()->is('profile'))
         <div class="mt-32">
             @include('partials/footer')
         </div>
         @endif
-        
     </body>
 </html>
