@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedInteger('age')->nullable()->default(null);
-            $table->foreignId('education_level_id')->constrained(
+            $table->foreignId('education_level_id')->nullable()->constrained(
                 table: 'education_levels', indexName: 'users_education_levels_id'
             );
             $table->string('email')->unique();
