@@ -71,13 +71,8 @@ class PagesController extends Controller
 
     public function message(){
         return view('pages/message', [
-            "title" => "Message"
-        ]);
-    }
-
-    public function profile(){
-        return view('pages/profile', [
-            "title" => "Profile"
+            "title" => "Message",
+            "company" => Company::latest()->limit(1)->get(),
         ]);
     }
 }
