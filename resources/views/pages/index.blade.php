@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <div class="h-auto lg:h-[100vh] pt-16 lg:pt-32 px-6">
+    <div class="h-auto pt-16 lg:pt-32 px-6">
         <div class="flex justify-start mb-6">
             <span class="text-2xl md:text-3xl font-bold">Check out some of our internships</span>
         </div>
