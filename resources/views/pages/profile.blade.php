@@ -35,7 +35,6 @@
                 </div>
             </div>
         </div>
-
         <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-semibold mb-4">General Information</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

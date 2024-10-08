@@ -24,7 +24,7 @@
                 <h1 class="text-2xl font-bold">{{ config('app.name', 'InternSphere') }}</h1>
             </div>
         </div>
-        
+
         <ul class="flex justify-center items-center gap-6">
             <li><a href="/"><img class="max-w-8 max-h-8" src="/assets/icon/instagram.png" alt="instagram"></a></li>
             <li><a href="/"><img class="max-w-8 max-h-8" src="/assets/icon/facebook.png" alt="facebook"></a></li>
