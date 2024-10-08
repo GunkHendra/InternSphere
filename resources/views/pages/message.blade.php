@@ -10,8 +10,8 @@
     @foreach ($company as $comp)
     <div class="shadow-md bg-white p-4 mb-2 rounded-lg">
         <li><a href="company/{{ $comp->slug }}" class="font-medium text-3xl">{{ $comp->company_name }}</a></li>
-        <li><a class="text-slate-500">Focused on {{ $comp->focus }}</a></li>
-        <li><a class="text-slate-500">Contact : {{ $comp->email }}</a></li>
+        <hr class="my-2">
+        <p>Halo sayang</p>
     </div>
     @endforeach
     </ul>

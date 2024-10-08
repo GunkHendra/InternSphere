@@ -1,4 +1,4 @@
-<div class="mt-10 bg-black">
+<div class="bg-black">
     <div class="flex items-center justify-between text-white h-20 p-6">
         <div class="flex items-center gap-4">
             <img class="max-w-8 max-h-8" src="/assets/icon/link.png" alt="">
@@ -22,7 +22,9 @@
                     <img class="max-w-24 max-h-24" src="/assets/logo.png" alt="logo">
                 </div>
                 <h1 class="text-2xl font-bold">{{ config('app.name', 'InternSphere') }}</h1>
-                
+            </div>
+        </div>
+
         <ul class="flex justify-center items-center gap-6">
             <li><a href="/"><img class="max-w-8 max-h-8" src="/assets/icon/instagram.png" alt="instagram"></a></li>
             <li><a href="/"><img class="max-w-8 max-h-8" src="/assets/icon/facebook.png" alt="facebook"></a></li>
@@ -40,15 +42,5 @@
                 <li>News</li>
             </ul>
         </div>
-    </div>
-</div>
-     </ul>
-        </div>
-    </div>
-</div>>
-    </div>
-</div>>
-    </div>
-</div>
     </div>
 </div>

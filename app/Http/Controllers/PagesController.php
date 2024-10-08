@@ -72,7 +72,7 @@ class PagesController extends Controller
     public function message(){
         return view('pages/message', [
             "title" => "Message",
-            "company" => Company::all(),
+            "company" => Company::latest()->limit(1)->get(),
         ]);
     }
 }
