@@ -42,12 +42,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <div class="h-[100vh] ">
-=======
-
     <div class="h-[100vh] pt-32">
->>>>>>> a0b9b107aee6c5f5b414835325935caecd2bb219
         <div class="flex justify-start mb-6">
             <span class="text-3xl font-bold">Check out some of our internship.</span>
         </div>
