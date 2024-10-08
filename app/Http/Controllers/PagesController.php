@@ -9,13 +9,14 @@ use App\Models\Requirement;
 use Illuminate\Http\Request;
 use App\Models\EducationLevel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class PagesController extends Controller
 {
     public function index(){
         return view('pages/index', [
             "title" => "Home",
-            "internship" => Internship::with(['company',])->latest()->limit(5)->get()
+            "internship" => Internship::with(['company',])->latest()->limit(9)->get()
         ]);
     }
 
@@ -23,7 +24,7 @@ class PagesController extends Controller
 
         $internship = Internship::with(['company'])->latest();
 
-        if (request('search')){
+        if (request('search') && Str::lower(request('search')) != "internship"){
             $internship->where('title', 'like', '%' . request('search') . '%')->orWhere('description', 'like', '%' . request('search') . '%');
         }
 
@@ -70,13 +71,8 @@ class PagesController extends Controller
 
     public function message(){
         return view('pages/message', [
-            "title" => "Message"
-        ]);
-    }
-
-    public function profile(){
-        return view('pages/profile', [
-            "title" => "Profile"
+            "title" => "Message",
+            "company" => Company::latest()->limit(1)->get(),
         ]);
     }
 }

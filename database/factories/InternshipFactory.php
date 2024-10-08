@@ -21,7 +21,7 @@ class InternshipFactory extends Factory
         return [
             'title' => fake()->sentence(3),
             'slug' => Str::slug(fake()->unique()->sentence()),
-            'excerpt' => fake()->sentence(40),
+            'excerpt' => fake()->sentence(15),
             'description' => '<p>' . implode('<p></p>', fake()->paragraphs(mt_rand(1, 3))) . '</p>',
             'published_at' => now(),
             'company_id' => Company::factory(),

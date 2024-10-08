@@ -1,14 +1,15 @@
 @extends('layouts/layout')
 
 @section('content')
-    <div class="mb-3">
+    <div class="mb-3 px-6">
         <form action="/internship" method="GET" class="flex items-center justify-between">
-            {{-- bg-slate-200 --}}
             <input type="text" class="border border-gray-200 bg-white text-sm rounded-lg w-full ps-4 py-2.5" placeholder="Search" name="search" value="{{ request('search') }}"/>
             <button type="submit" class="border border-gray-200 bg-white p-3 ml-2 text-sm rounded-lg">
                 <img class="w-4 h-4 " src="assets/search.png" alt="search-icon">
             </button>
         </form>
     </div>
-    @include('layouts/internship_list')
+    <div class="px-6">
+        @include('partials/internship_list')
+    </div>
 @endsection

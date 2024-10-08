@@ -4,7 +4,9 @@ use App\Models\Internship;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 // routing
 // home
@@ -25,9 +27,14 @@ Route::get('/mynetwork', [PagesController::class, 'mynetwork']);
 Route::get('/message', [PagesController::class, 'message']);
 
 // profile
-Route::get('/profile', [PagesController::class, 'profile']);
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
 
 // login register
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
+// logout
+Route::post('/logout', [LoginController::class, 'logout']);
+
