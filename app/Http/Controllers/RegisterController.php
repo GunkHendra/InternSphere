@@ -11,20 +11,18 @@ class RegisterController extends Controller
 {
     public function index(){
         return view('register/index', [
-            "title" => "Register",
-            "education" => EducationLevel::all()
+            "title" => "Register"
         ]);
     }
 
     public function store(Request $request){
         $validated = $request->validate([
             'name' => ['required'],
-            'education_level_id' => ['required'],
-            'emaild' => ['required', 'unique:users,email', 'email:dns'],
+            'email' => ['required', 'unique:users,email', 'email:dns'],
             'password' => ['required', 'min:8'],
         ]);
 
-        dd($validated);
-        // User::create($validated);
+        User::create($validated);
+        return redirect('/login')->with('success', 'Successfully Registered! You may login now.');
     }
 }
