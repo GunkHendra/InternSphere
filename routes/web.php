@@ -38,3 +38,11 @@ Route::post('/register', [RegisterController::class, 'store']);
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/message_detail', function(){
+    return view('pages.message_detail', [
+        'title' => 'Detail'
+    ]);
+});
+
+
+
