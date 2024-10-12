@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('content')
-<div class="container mx-auto">
+<div class="container mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-lg shadow-md">
             <div class="text-center">
@@ -77,11 +77,11 @@
             <img class="w-6 h-6" src="/assets/icon/youtube.png" alt="Youtube">
         </div>
     </div>
-    <div class="flex justify-end">
+    {{-- <div class="flex justify-end">
         <form action="logout" method="POST">
             @csrf
             <button class="text-white px-4 py-2 rounded-lg shadow-md mt-4 bg-red-600">Logout</button>
         </form>
-    </div>
+    </div> --}}
 </div>
 @endsection

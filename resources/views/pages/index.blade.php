@@ -41,10 +41,11 @@
         </div>
     </div>
 
-    <div class="h-auto pt-16 lg:pt-32 px-6">
-        <div class="flex justify-start mb-6">
-            <span class="text-2xl md:text-3xl font-bold">Check out some of our internships</span>
+    <div class="h-auto pt-16 lg:py-32 px-6">
+        <div class="flex justify-center mb-6">
+            <span class="text-2xl md:text-5xl font-bold">Check out some of our internships</span>
         </div>
+        <hr class="mb-6 border border-black">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($internship as $intern)
                 <div class="p-4 bg-white shadow-md rounded-lg">
@@ -54,5 +55,6 @@
                 </div>
             @endforeach
         </div>
+        <hr class="my-6 border border-black">
     </div>
 @endsection

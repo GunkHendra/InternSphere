@@ -30,7 +30,8 @@ class PagesController extends Controller
 
         return view('pages/internship', [
             "title" => "Internship",
-            "internship" => $internship->get()
+            "internship" => $internship->get(),
+            // "requirement" => Requirement::where('internship_id', $internship->id)->first()
         ]);
     }
 
@@ -71,6 +72,13 @@ class PagesController extends Controller
 
     public function message(){
         return view('pages/message', [
+            "title" => "Message",
+            "company" => Company::latest()->limit(1)->get(),
+        ]);
+    }
+
+    public function message_detail(){
+        return view('pages/message_detail', [
             "title" => "Message",
             "company" => Company::latest()->limit(1)->get(),
         ]);
