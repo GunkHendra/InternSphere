@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Company;
 use App\Models\Education;
 use App\Models\Internship;
 use App\Models\Requirement;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\EducationLevel;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 
 class PagesController extends Controller
 {
@@ -21,7 +22,6 @@ class PagesController extends Controller
     }
 
     public function internship(){
-
         $internship = Internship::with(['company'])->latest();
 
         if (request('search') && Str::lower(request('search')) != "internship"){
@@ -38,7 +38,10 @@ class PagesController extends Controller
         return view('pages/internship_detail', [
             "title" => "Internship",
             "internship" => $internship,
-            "requirement" => Requirement::where('internship_id', $internship->id)->first()
+            "requirement" => Requirement::where('internship_id', $internship->id)->first(),
+            "averageRating" => $internship->averageRating(),
+            "commentsCount" => $internship->commentsCount(),
+            "comments" => $internship->comments()->latest()->get(),
         ]);
     }
 
@@ -75,4 +78,27 @@ class PagesController extends Controller
             "company" => Company::latest()->limit(1)->get(),
         ]);
     }
+
+    public function message_detail(){
+        return view('pages/message_detail', [
+            'title' => 'Detail'
+        ]);
+    }
+
+    public function storeComment(Request $request, $internshipId){
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string',
+        ]);
+
+        $user = auth()->user();
+
+        Comment::create([
+            'internship_id' => $internshipId,
+            'user_id' => $user->id,
+        ]);
+
+        return redirect()->back()->with('message', 'Comment added successfully.');
+    }
+
 }

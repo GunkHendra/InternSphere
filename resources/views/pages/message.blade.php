@@ -59,5 +59,5 @@
         <p>You've Got A New Message!</p>
     </div>
     @endforeach
-    </ul>  
+    </ul>
 @endsection

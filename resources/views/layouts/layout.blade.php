@@ -11,10 +11,10 @@
     <body class="bg-gray-100 font-poppins pt-20 w-full h-full flex flex-col min-h-screen">
         @include('partials/navbar')
 
-        <div class="mb-32">
+        <div class="mb-6">
             @yield('content')
         </div>
-        
+
         @if (!request()->is('login') && !request()->is('register') && !request()->is('profile'))
         <div class="mt-auto">
             @include('partials/footer')

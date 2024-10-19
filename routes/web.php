@@ -25,6 +25,7 @@ Route::get('/mynetwork', [PagesController::class, 'mynetwork']);
 
 // message
 Route::get('/message', [PagesController::class, 'message']);
+Route::get('/message_detail', [PagesController::class, 'message_detail']);
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
@@ -38,11 +39,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/message_detail', function(){
-    return view('pages.message_detail', [
-        'title' => 'Detail'
-    ]);
-});
+Route::post('/internship/{internship}/comment', [PagesController::class, 'storeComment']);
+
+
+
 
 
 
