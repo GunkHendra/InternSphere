@@ -30,7 +30,8 @@ class PagesController extends Controller
 
         return view('pages/internship', [
             "title" => "Internship",
-            "internship" => $internship->get()
+            "internship" => $internship->get(),
+            // "requirement" => Requirement::where('internship_id', $internship->id)->first()
         ]);
     }
 
@@ -81,24 +82,8 @@ class PagesController extends Controller
 
     public function message_detail(){
         return view('pages/message_detail', [
-            'title' => 'Detail'
+            "title" => "Message",
+            "company" => Company::latest()->limit(1)->get(),
         ]);
     }
-
-    public function storeComment(Request $request, $internshipId){
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'required|string',
-        ]);
-
-        $user = auth()->user();
-
-        Comment::create([
-            'internship_id' => $internshipId,
-            'user_id' => $user->id,
-        ]);
-
-        return redirect()->back()->with('message', 'Comment added successfully.');
-    }
-
 }

@@ -39,10 +39,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::post('/internship/{internship}/comment', [PagesController::class, 'storeComment']);
-
-
-
+Route::get('/message_detail', [PagesController::class, 'message_detail']);
 
 
 
