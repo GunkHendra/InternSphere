@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Company;
+use App\Models\Appliance;
 use App\Models\Education;
 use App\Models\Internship;
 use App\Models\Requirement;
@@ -11,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\EducationLevel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -42,7 +44,31 @@ class PagesController extends Controller
             "averageRating" => $internship->averageRating(),
             "commentsCount" => $internship->commentsCount(),
             "comments" => $internship->comments()->latest()->get(),
+            "isApplied" => Appliance::where('internship_id', $internship->id)->where('user_id', Auth::id())->first(),
         ]);
+    }
+
+    public function apply(Internship $internship){
+        if (!Auth::check()) {
+            return redirect()->back()->with('error', 'You need to be logged in to apply for an internship.');
+        }
+
+        $userId = Auth::id();
+
+        $existingApplication = Appliance::where('internship_id', $internship->id)
+            ->where('user_id', $userId)
+            ->first();
+
+        if ($existingApplication) {
+            return redirect()->back()->with('error', 'You have already applied for this internship.');
+        }
+
+        Appliance::create([
+            'user_id' => $userId,
+            'internship_id' => $internship->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Successfully applied for this internship!');
     }
 
     public function company(){

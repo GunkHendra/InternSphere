@@ -1,32 +1,46 @@
 @php
     $addon = ['st', 'nd', 'rd', 'th'];
+    $star = ['Star_0.png', 'Star_1.png', 'Star_2.png', 'Star_3.png', 'Star_4.png', 'Star_Full.png'];
 @endphp
 
 @extends('layouts/layout')
 
 @section('content')
 <div class="px-6">
-
     <div class="rounded-lg bg-white shadow-md p-4 mb-2">
-        <div class="flex items-center gap-4">
-            @if($internship->company && $internship->company->logo)
-                <img src="{{ asset('assets/logo/' . $internship->company->logo) }}" alt="{{ $internship->company->company_name }} logo" class="w-16 h-16">
-            @else
-                <img src="{{ asset('assets/logo/default_logo.png') }}" alt="Default logo" class="w-16 h-16">
-            @endif
-            <div>
-                <a class="font-medium text-3xl">{{ $internship->title }}</a><br>
-                <a class="text-slate-500" href="/company/{{ $internship->company->slug }}">By {{ $internship->company->company_name }}</a>
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                @if($internship->company && $internship->company->logo)
+                    <img src="{{ asset('assets/logo/' . $internship->company->logo) }}" alt="{{ $internship->company->company_name }} logo" class="w-16 h-16">
+                @else
+                    <img src="{{ asset('assets/logo/default_logo.png') }}" alt="Default logo" class="w-16 h-16">
+                @endif
+                <div>
+                    <a class="font-medium text-3xl">{{ $internship->title }}</a><br>
+                    <a class="text-slate-500" href="/company/{{ $internship->company->slug }}">By {{ $internship->company->company_name }}</a>
+                </div>
             </div>
+            {{-- <form action="{{ route('internship.apply', $internship->id) }}" method="POST"> --}}
+            <form action="/internship/apply/{{ $internship->id }}" method="POST">
+                @csrf
+                @if ($isApplied === null)
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Apply
+                    </button>
+                @else
+                    <button type="button" class="bg-white border-2 border-blue-500 text-black py-2 px-4 rounded-lg" disabled>
+                        Already Applied
+                    </button>
+                @endif
+            </form>
         </div>
         <hr class="my-2">
         {!! $internship->description !!}
 
-        <p class="mt-2 flex items-center justify-left">
-            Rating: {{ $averageRating ? round($averageRating, 2) : 'No rating yet' }} / 5
-            <span class="ml-1 mb-1">
-                <!-- Manual star icon addition -->
-                <img src="{{ asset('assets/icon/Star_Full.png') }}" alt="Full Star" class="inline w-35 h-10">
+        <p class="flex items-center justify-left gap-1">
+            Rating: {{ $internship->averageRating() ? round($internship->averageRating(), 0) : 'No rating yet' }} / 5
+            <span>
+                 <img src="{{ asset('assets/icon/' . $star[round($internship->averageRating(), 0)]) }}" alt="Star" class="inline w-35 h-10">
             </span>
         </p>
         <p class="text-sm">{{ $commentsCount }} comments</p>

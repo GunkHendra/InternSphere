@@ -16,6 +16,8 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/internship', [PagesController::class, 'internship']);
 Route::get('/internship/{internship:slug}', [PagesController::class, 'internship_detail']);
 
+Route::post('/internship/apply/{internship:id}', [PagesController::class, 'apply'])->middleware('auth');
+
 // company
 Route::get('/company', [PagesController::class, 'company']);
 Route::get('/company/{company:slug}', [PagesController::class, 'company_detail']);

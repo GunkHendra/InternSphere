@@ -15,7 +15,7 @@
     </div>
 
     <div class="flex flex-row px-6 space-x-6">
-        <div class="basis-2/4">
+        <div>
             @if ($internship->first() === null)
                 <div class="p-4 mb-2 bg-white shadow-md rounded-lg">
                     There's nothing to see here yet...
@@ -50,35 +50,35 @@
             </ul>
         </div>
 
-        <div class="basis-2/4 p-4 bg-white shadow-md rounded-lg" id="internship-detail">
+        {{-- <div class="basis-2/4 p-4 bg-white shadow-md rounded-lg" id="internship-detail">
             <p class="text-center text-slate-400">Select an internship to see the details</p>
-        </div>
+        </div> --}}
     </div>
 
     <script>
 
-        let selectedInternshipId = null;
-        function showDetails(id) {
-            if (selectedInternshipId === id) {
-                document.getElementById('intern-' + id).classList.remove('border-2');
-                document.getElementById('internship-detail').innerHTML = `
-                    <p class="text-center text-slate-400">Select an internship to see the details</p>
-                `;
-                selectedInternshipId = null;
-                return;
-            }
-            else{                
-                let internship_item = document.querySelectorAll('.internship-item');
-                internship_item.forEach(function(el) {
-                    el.classList.remove('border-2');
-                });
+        // let selectedInternshipId = null;
+        // function showDetails(id) {
+        //     if (selectedInternshipId === id) {
+        //         document.getElementById('intern-' + id).classList.remove('border-2');
+        //         document.getElementById('internship-detail').innerHTML = `
+        //             <p class="text-center text-slate-400">Select an internship to see the details</p>
+        //         `;
+        //         selectedInternshipId = null;
+        //         return;
+        //     }
+        //     else{                
+        //         let internship_item = document.querySelectorAll('.internship-item');
+        //         internship_item.forEach(function(el) {
+        //             el.classList.remove('border-2');
+        //         });
     
-                let selected_internship = document.getElementById('intern-' + id);
-                selected_internship.classList.add('border-2');
-                selected_internship.classList.add('border-sky-300');
+        //         let selected_internship = document.getElementById('intern-' + id);
+        //         selected_internship.classList.add('border-2');
+        //         selected_internship.classList.add('border-sky-300');
     
-                selectedInternshipId = id;
-            }
-        }
+        //         selectedInternshipId = id;
+        //     }
+        // }
     </script>
 @endsection
