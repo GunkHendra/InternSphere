@@ -31,7 +31,6 @@ class PagesController extends Controller
         return view('pages/internship', [
             "title" => "Internship",
             "internship" => $internship->get(),
-            // "requirement" => Requirement::where('internship_id', $internship->id)->first()
         ]);
     }
 
@@ -60,10 +59,29 @@ class PagesController extends Controller
     }
 
     public function company_detail(Company $company){
+        $comp = Company::with(['internship.comments'])
+                ->where('id', $company->id)
+                ->first();
+
+        $divider = 0;
+        $averageRatingHolder = 0;
+        foreach ($comp->internship as $intern) {
+            $averageRating = $intern->comments->avg('rating');
+            $averageRatingHolder += round($averageRating);
+            $divider++;
+        }
+
+        if ($divider != 0){
+            $averageRating = $averageRatingHolder / $divider;
+        } else{
+            $averageRating = 0;
+        }
+
         return view('pages/company_detail', [
             "title" => "Company",
             "company" => $company,
-            "internship" => Internship::where('company_id', $company->id)->with(['company',])->latest()->get()
+            "internship" => Internship::where('company_id', $company->id)->with(['company',])->latest()->get(),
+            "companyRating" => $averageRating,
         ]);
     }
 

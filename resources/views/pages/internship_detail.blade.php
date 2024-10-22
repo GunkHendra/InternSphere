@@ -22,8 +22,12 @@
         <hr class="my-2">
         {!! $internship->description !!}
 
-        <p class="mt-2">
+        <p class="mt-2 flex items-center justify-left">
             Rating: {{ $averageRating ? round($averageRating, 2) : 'No rating yet' }} / 5
+            <span class="ml-1 mb-1">
+                <!-- Manual star icon addition -->
+                <img src="{{ asset('assets/icon/Star_Full.png') }}" alt="Full Star" class="inline w-35 h-10">
+            </span>
         </p>
         <p class="text-sm">{{ $commentsCount }} comments</p>
     </div>
@@ -45,13 +49,15 @@
         @if($internship->comments->isEmpty())
             <p>No comments yet. Be the first to comment!</p>
         @else
+        <div class="flex flex-col gap-4">
             @foreach ($internship->comments as $comment)
-                <div class="border-b border-gray-200 mb-4 pb-4">
+                <div class="@if (!$loop->last) border-b pb-4 @endif border-gray-200">
                     <p><strong>{{ $comment->user->name }}</strong> <span class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span></p>
                     <p>Rating: {{ $comment->rating }} / 5</p>
                     <p>{{ $comment->comment }}</p>
                 </div>
             @endforeach
+        </div>
         @endif
     </div>
 </div>

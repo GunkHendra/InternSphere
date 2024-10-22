@@ -1,3 +1,7 @@
+@php
+    $star = ['Star_0.png', 'Star_1.png', 'Star_2.png', 'Star_3.png', 'Star_4.png', 'Star_Full.png'];
+@endphp
+
 @extends('layouts/layout')
 
 @section('content')
@@ -30,10 +34,15 @@
                         </div>
                         <li><a href="/company/{{ $intern->company->slug }}" class="text-slate-500">By {{ $intern->company->company_name }}</a></li>
                         <hr class="my-2">
-                        <li>{{ $intern->excerpt }}</li>
-                        <p class="mt-2">
+                        <li><p class="text-sm md:text-base line-clamp-3">{{ $intern->description }}</p></li>
+
+                        <p class="flex items-center justify-left gap-1">
                             Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 0) : 'No rating yet' }} / 5
+                            <span>
+                                 <img src="{{ asset('assets/icon/' . $star[round($intern->averageRating(), 0)]) }}" alt="Star" class="inline w-35 h-10">
+                            </span>
                         </p>
+
                         <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
                         <span class="text-sky-300">Read more >></span>
                     </div>
@@ -47,25 +56,26 @@
     </div>
 
     <script>
-        let selectedInternshipId = null;
 
+        let selectedInternshipId = null;
         function showDetails(id) {
             if (selectedInternshipId === id) {
-                document.getElementById('intern-' + id).classList.remove('bg-sky-100');
+                document.getElementById('intern-' + id).classList.remove('border-2');
                 document.getElementById('internship-detail').innerHTML = `
                     <p class="text-center text-slate-400">Select an internship to see the details</p>
                 `;
                 selectedInternshipId = null;
                 return;
             }
-            else{
+            else{                
                 let internship_item = document.querySelectorAll('.internship-item');
                 internship_item.forEach(function(el) {
-                    el.classList.remove('bg-sky-100');
+                    el.classList.remove('border-2');
                 });
     
                 let selected_internship = document.getElementById('intern-' + id);
-                selected_internship.classList.add('bg-sky-100');
+                selected_internship.classList.add('border-2');
+                selected_internship.classList.add('border-sky-300');
     
                 selectedInternshipId = id;
             }

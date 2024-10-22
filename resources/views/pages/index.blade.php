@@ -1,3 +1,7 @@
+@php
+    $star = ['Star_0.png', 'Star_1.png', 'Star_2.png', 'Star_3.png', 'Star_4.png', 'Star_Full.png'];
+@endphp
+
 @extends('layouts/layout')
 
 @section('content')
@@ -5,7 +9,7 @@
         <div class="flex flex-col md:flex-row justify-between items-center gap-10">
             <img class="max-w-56 max-h-56" src="/assets/logo.png" alt="Logo">
             <div class="space-y-5 text-center">
-                <a href="/about" class="text-6xl md:text-8xl sm:text-center md:text-center font-bold">{{ config('app.name') }}</a>
+                <a href="/" class="text-6xl md:text-8xl sm:text-center md:text-center font-bold">{{ config('app.name') }}</a>
                 <p class="text-lg md:text-2xl">Where the internship waits for you.</p>
                 <div class="block mb-3">
                     <form action="/internship" method="GET" class="flex items-center justify-center md:justify-between">
@@ -48,22 +52,28 @@
         <hr class="mb-6 border border-black">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($internship as $intern)
-                <div class="p-4 bg-white shadow-md rounded-lg">
-                    <div class="flex items-center gap-4">
-                        @if($intern->company && $intern->company->logo)
-                            <img src="{{ asset('assets/logo/' . $intern->company->logo) }}" alt="{{ $intern->company->company_name }} logo" class="w-12 h-12">
-                        @else
-                            <img src="{{ asset('assets/logo/default_logo.png') }}" alt="Default logo" class="w-12 h-12">
-                        @endif
-                        <a href="/internship/{{ $intern->slug }}" class="font-medium text-xl md:text-2xl">{{ $intern->title }}</a>
+                <div class="p-4 bg-white shadow-md rounded-lg flex flex-col justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-4">
+                            @if($intern->company && $intern->company->logo)
+                                <img src="{{ asset('assets/logo/' . $intern->company->logo) }}" alt="{{ $intern->company->company_name }} logo" class="w-12 h-12">
+                            @else
+                                <img src="{{ asset('assets/logo/default_logo.png') }}" alt="Default logo" class="w-12 h-12">
+                            @endif
+                            <a href="/internship/{{ $intern->slug }}" class="font-medium text-xl md:text-2xl">{{ $intern->title }}</a>
+                        </div>
+                        <a href="/company/{{ $intern->company->slug }}" class="text-slate-500">By {{ $intern->company->company_name }}</a>
+                        <p class="text-sm md:text-base line-clamp-3">{{ $intern->description }}</p>
                     </div>
-                    <a href="/company/{{ $intern->company->slug }}" class="text-slate-500">By {{ $intern->company->company_name }}</a>
-                    <p class="text-sm md:text-base">{{ $intern->excerpt }}</p>
-
-                    <p class="mt-2">
-                        Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 2) : 'No rating yet' }} / 5
-                    </p>
-                    <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
+                    <div>
+                        <p class="flex items-center justify-left gap-1">
+                            Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 0) : 'No rating yet' }} / 5
+                            <span>
+                                <img src="{{ asset('assets/icon/' . $star[round($intern->averageRating(), 0)]) }}" alt="Star" class="inline w-35 h-10">
+                            </span>
+                        </p>
+                        <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
+                    </div>
                 </div>
             @endforeach
         </div>

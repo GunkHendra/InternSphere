@@ -1,3 +1,7 @@
+@php
+    $star = ['Star_0.png', 'Star_1.png', 'Star_2.png', 'Star_3.png', 'Star_4.png', 'Star_Full.png'];
+@endphp
+
 @extends('layouts/layout')
 
 @section('content')
@@ -10,7 +14,12 @@
                 <img src="{{ asset('assets/logo/default_logo.png') }}" alt="Default logo" class="w-16 h-16">
             @endif
             <ul>
-                <li class="font-medium text-3xl">{{ $company->company_name }}</li>
+                <li>
+                    <p class="flex items-center justify-left gap-1">
+                        <span class="font-medium text-3xl">{{ $company->company_name }}</span>
+                        <span><img src="{{ asset('assets/icon/' . $star[$companyRating]) }}" alt="Star" class="inline w-35 h-10"></span>
+                    </p>
+                </li>
                 <hr class="my-2">
                 <li><a class="text-slate-500">Focused on {{ $company->focus }}</a></li>
                 <li><a class="text-slate-500">Contact : {{ $company->email }}</a></li>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('excerpt');
+            // $table->text('excerpt');
             $table->text('description');
             $table->timestamp('published_at')->nullable();
             $table->foreignId('company_id')->constrained(
