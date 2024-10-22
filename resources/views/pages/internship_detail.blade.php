@@ -65,13 +65,17 @@
         @else
         <div class="flex flex-col gap-4">
             @foreach ($internship->comments as $comment)
-                <div class="@if (!$loop->last) border-b pb-4 @endif border-gray-200">
-                    <p><strong>{{ $comment->user->name }}</strong> <span class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span></p>
-                    <p>Rating: {{ $comment->rating }} / 5</p>
-                    <p>{{ $comment->comment }}</p>
+        <div class="@if (!$loop->last) border-b pb-4 @endif border-gray-200">
+            <p><strong>{{ $comment->user->name }}</strong> <span class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span></p>
+                <div class="flex items-center gap-2">
+                <p>Rating: {{ $comment->rating }} / 5</p>
+                <!-- Menampilkan bintang di sebelah rating -->
+                <img src="{{ asset('assets/icon/' . $star[$comment->rating]) }}" alt="Star" class="w-35 h-10 inline-block">
                 </div>
-            @endforeach
+            <p>{{ $comment->comment }}</p>
         </div>
+    @endforeach
+</div>
         @endif
     </div>
 </div>
