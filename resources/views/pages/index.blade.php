@@ -62,6 +62,10 @@
 
                     <p class="mt-2">
                         Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 2) : 'No rating yet' }} / 5
+                        <span class="ml-1 mb-1">
+                        <!-- Manual star icon addition -->
+                        <img src="{{ asset('assets/icon/Star_Full.png') }}" alt="Full Star" class="inline w-35 h-10">
+                        </span>
                     </p>
                     <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
                 </div>

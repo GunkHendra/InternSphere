@@ -22,8 +22,12 @@
         <hr class="my-2">
         {!! $internship->description !!}
 
-        <p class="mt-2">
+        <p class="mt-2 flex items-center justify-left">
             Rating: {{ $averageRating ? round($averageRating, 2) : 'No rating yet' }} / 5
+            <span class="ml-1 mb-1">
+                <!-- Manual star icon addition -->
+                <img src="{{ asset('assets/icon/Star_Full.png') }}" alt="Full Star" class="inline w-35 h-10">
+            </span>
         </p>
         <p class="text-sm">{{ $commentsCount }} comments</p>
     </div>
