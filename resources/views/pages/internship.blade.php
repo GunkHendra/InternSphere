@@ -20,7 +20,7 @@
             <ul id="internship-list">
                 @foreach ($internship as $intern)
                     <div class="p-4 bg-white shadow-md rounded-lg @if (!$loop->last) mb-2 @endif cursor-pointer internship-item" onclick="showDetails('{{ $intern->id }}')" id="intern-{{ $intern->id }}">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-4 mb-2">
                             @if($intern->company && $intern->company->logo)
                                 <img src="{{ asset('assets/logo/' . $intern->company->logo) }}" alt="{{ $intern->company->company_name }} logo" class="w-12 h-12">
                             @else
@@ -28,11 +28,11 @@
                             @endif
                             <a href="/internship/{{ $intern->slug }}" class="font-medium text-xl md:text-2xl">{{ $intern->title }}</a>
                         </div>
-                        <li><a class="text-slate-500">By {{ $intern->company->company_name }}</a></li>
+                        <li><a href="/company/{{ $intern->company->slug }}" class="text-slate-500">By {{ $intern->company->company_name }}</a></li>
                         <hr class="my-2">
                         <li>{{ $intern->excerpt }}</li>
                         <p class="mt-2">
-                            Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 2) : 'No rating yet' }} / 5
+                            Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 0) : 'No rating yet' }} / 5
                         </p>
                         <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
                         <span class="text-sky-300">Read more >></span>
@@ -58,16 +58,17 @@
                 selectedInternshipId = null;
                 return;
             }
-
-            let internship_item = document.querySelectorAll('.internship-item');
-            internship_item.forEach(function(el) {
-                el.classList.remove('bg-sky-100');
-            });
-
-            let selected_internship = document.getElementById('intern-' + id);
-            selected_internship.classList.add('bg-sky-100');
-
-            selectedInternshipId = id;
+            else{
+                let internship_item = document.querySelectorAll('.internship-item');
+                internship_item.forEach(function(el) {
+                    el.classList.remove('bg-sky-100');
+                });
+    
+                let selected_internship = document.getElementById('intern-' + id);
+                selected_internship.classList.add('bg-sky-100');
+    
+                selectedInternshipId = id;
+            }
         }
     </script>
 @endsection

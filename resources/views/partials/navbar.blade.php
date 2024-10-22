@@ -21,8 +21,8 @@
             <li class="relative">
                 <button id="profile-dropdown-toggle" class="{{ ($title === 'Profile') ? 'text-white' : 'text-slate-400' }}">Profile</button>
                 <ul id="profile-dropdown" class="absolute right-0 mt-2 hidden shadow-lg">
-                    <li><a href="/profile" class="block px-4 py-2 bg-white text-black rounded-t-lg">Profile</a></li>
-                    <li class="bg-red-600 rounded-b-lg">
+                    <li><a href="/profile" class="block px-4 py-2 bg-white text-black rounded-t-md">Profile</a></li>
+                    <li class="bg-red-600 rounded-b-md">
                         <form method="POST" action="/logout">
                             @csrf
                             <button type="submit" class="text-white block w-full text-left px-4 py-2">Logout</button>
