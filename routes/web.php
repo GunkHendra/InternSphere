@@ -31,6 +31,8 @@ Route::get('/message_detail', [PagesController::class, 'message_detail']);
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::get('/edit_profile', [ProfileController::class, 'edit_profile'])->name('edit_profile')->middleware('auth');
+Route::post('/edit_profile', [ProfileController::class, 'update_profile'])->name('update_profile')->middleware('auth');
 
 // login register
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -41,7 +43,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/message_detail', [PagesController::class, 'message_detail']);
 
+Route::get('/message_detail', [PagesController::class, 'message_detail']);
 
 

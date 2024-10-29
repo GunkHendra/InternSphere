@@ -23,6 +23,12 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
+            $table->string('about')->nullable()->default('About');
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('telp')->nullable()->default('Nomor Telpon');
+            $table->string('alamat')->nullable()->default('Alamat');
+            $table->string('fotoprofile')->nullable()->default('Profile');
+            $table->string('pdf')->nullable()->default('CV');
             $table->timestamps();
         });
 

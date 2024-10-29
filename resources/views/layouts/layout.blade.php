@@ -15,7 +15,7 @@
             @yield('content')
         </div>
 
-        @if (!request()->is('login') && !request()->is('register') && !request()->is('profile'))
+        @if (!request()->is('login') && !request()->is('register') && !request()->is('profile') && !request()->is('edit_profile'))
         <div class="mt-auto">
             @include('partials/footer')
         </div>
