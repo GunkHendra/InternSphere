@@ -130,4 +130,5 @@ class PagesController extends Controller
             "company" => Company::latest()->limit(1)->get(),
         ]);
     }
+
 }
