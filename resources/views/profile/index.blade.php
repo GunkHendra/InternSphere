@@ -1,71 +1,83 @@
+@php
+    $addon = ['st', 'nd', 'rd', 'th'];
+@endphp
+
 @extends('layouts/layout')
 
 @section('content')
-<div class="container mx-auto px-6 mt-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="text-center">
-                <img class="w-24 h-24 mx-auto rounded-full object-cover" src="{{ $user->fotoprofile }}" alt="Profile Picture">
-                <h2 class="text-xl font-semibold mt-4">{{ $user->name }}</h2>
-                <h4 class="font-semibold">{{ $user->alamat }}</h4>
-            </div>
-            <div class="mt-6">
-                <h3 class="text-lg font-semibold">Contact Information</h3>
-                <ul class="mt-2 text-gray-700">
-                    <li>{{ $user->email }}</li>
-                    <li>{{ $user->telp }}</li>
-                </ul>
-            </div>
+<div class="flex justify-center mt-10 px-6">
+    <!-- General Information Card -->
+    <div class="w-1/2 bg-white shadow-md rounded-lg p-6 mr-4">
+        <div class="mb-4 pb-2 w-full flex justify-center">
+            <img class="w-32 h-32 rounded-full mt-2" src="{{ $user->fotoprofile ?? '/assets/illustration/profil.jpg' }}" alt="Profile Picture">
         </div>
-        <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-xl font-semibold mb-4">General Information</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <h4 class="font-semibold">About Me</h4>
-                    <p class="text-gray-600 text-sm mt-2">{{ $user->about }}</p>
-                </div>
-            </div>
+        <h2 class="text-2xl font-semibold mb-4">General Information</h2>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Full Name</h3>
+            <p>{{ $user->name ?? 'No name provided' }}</p>
+        </div>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">About Me</h3>
+            <p>{{ $user->about ?? 'No description provided' }}</p>
+        </div>
+        {{-- <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">CV</h3>
+            @if($user->pdf)
+                <a href="{{ asset('storage/cv/'.$user->pdf) }}" class="text-blue-600 hover:underline" target="_blank">{{ $user->pdf }}</a>
+            @else
+                <p>No CV available</p>
+            @endif
+        </div> --}}
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                @if ($user->education_level_id === null)
-                    <div>
-                        <h4 class="font-semibold">Education</h4>
-                        <p class="text-gray-600 text-sm mt-2">No Data</p>
-                    </div>
+    <!-- Personal Information Card -->
+    <div class="w-1/2 bg-white shadow-md rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-semibold">Personal Information</h2>
+            <a href="/edit_profile" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Edit</a>
+        </div>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Date of Birth</h3>
+            <p>{{ $user->tanggal_lahir ? \Carbon\Carbon::parse($user->tanggal_lahir)->format('d-m-Y') : 'No date of birth provided' }}</p>
+        </div>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Age</h3>
+            <p>
+                @if ($user->tanggal_lahir)
+                    @php
+                        $birthdate = strtotime($user->tanggal_lahir);
+                        $age = floor((time() - $birthdate) / (365 * 60 * 60 * 24)); // Calculate age in years
+                    @endphp
+                    {{ $age }} years old
                 @else
-                    <div>
-                        <h4 class="font-semibold">Education</h4>
-                        <p class="text-gray-600 text-sm mt-2">{{ $educations->education_level }}, {{ $educations->education_year }} Year</p>
-                    </div>
+                    No age provided
                 @endif
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div>
-                    <h4 class="font-semibold">Birthday</h4>
-                    <p class="text-gray-600 text-sm mt-2">{{ $user->tanggal_lahir }}</p>
-                </div>
-            </div>
-            <div class="font-semibold pt-5 text-sky-500">
-                @if($user->pdf)
-                    <a href="{{ asset('storage/' . $user->pdf) }}" download class="hover:underline">Download CV</a>
+            </p>
+        </div>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Education</h3>
+            <p>
+                @if ($educations === null)
+                    No education provided
+                @else
+                    {{ $educations->education_level}}, 
+                    {{ $educations->education_year}}{{ $addon[$educations->education_year-1] }} year
                 @endif
-            </div>
+            </p>
         </div>
-    </div>
-
-    <div class="p-6 rounded-lg shadow-md mt-4 bg-black">
-        <p class="text-white">Social Media</p>
-        <div class="flex space-x-4 mt-2">
-            <img class="w-6 h-6" src="/assets/icon/instagram.png" alt="Instagram">
-            <img class="w-6 h-6" src="/assets/icon/facebook.png" alt="Facebook">
-            <img class="w-6 h-6" src="/assets/icon/telegram.png" alt="Telegram">
-            <img class="w-6 h-6" src="/assets/icon/twitter.png" alt="Twitter">
-            <img class="w-6 h-6" src="/assets/icon/youtube.png" alt="Youtube">
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Phone Number</h3>
+            <p>{{ $user->telp ?? 'No phone number provided' }}</p>
         </div>
-    </div>
-    <div class="flex justify-end pt-2">
-        <a href="edit_profile" class="w-1/5 text-white p-4 rounded text-2xl bg-gray-400 text-center">Edit</a>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Email</h3>
+            <p>{{ $user->email ?? 'No email provided' }}</p>
+        </div>
+        <div class="mb-4 border-b pb-2">
+            <h3 class="text-gray-700">Address</h3>
+            <p>{{ $user->alamat ?? 'No address provided' }}</p>
+        </div>
     </div>
 </div>
+
 @endsection
