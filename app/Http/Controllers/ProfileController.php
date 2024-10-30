@@ -21,7 +21,7 @@ class ProfileController extends Controller
     {
         return view('profile/edit_profile', [
             "title" => "Edit Profile",
-            "educations" => EducationLevel::all(),
+            "educationLevels" => EducationLevel::all(),
             "user" => Auth::user(),
         ]);
 

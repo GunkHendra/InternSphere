@@ -1,62 +1,68 @@
+@php
+    $addon = ['st', 'nd', 'rd', 'th'];
+@endphp
+
 @extends('layouts/layout')
 
 @section('content')
-<div class="container mx-auto px-6 mt-10">
-    <form action="/edit_profile" method="POST" enctype="multipart/form-data"">
+<div class="container mx-auto mt-10">
+    <h1 class="text-3xl font-bold mb-6">Edit Profile</h1>
+
+    <form action="/edit_profile" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <div class="text-center">
-                    <div class="relative w-24 h-24 mx-auto mb-2">
-                        <label for="fotoprofile" class="block w-full h-full border-2 border-dashed rounded-full cursor-pointer overflow-hidden">
-                            <img id="previewImage" src="{{ $user->fotoprofile }}" alt="Profile Picture" class="w-full h-full object-cover rounded-full">
-                        </label>
-                        <input type="file" id="fotoprofile" name="fotoprofile" accept="image/*" class="hidden" onchange="previewImage(event)">
-                    </div>
-                    <input class="w-full border bg-gray-200 rounded mb-2 text-center p-2" type="text" name="name" placeholder="Nama Lengkap" value="{{ $user->name }}" required>
-                    <input type="text" name="alamat" placeholder="Alamat" class="border w-full bg-gray-200 rounded text-center p-2" value="{{ $user->alamat }}" required>
-                </div>
-                <div class="mt-6">
-                    <h3 class="text-lg font-semibold">Contact Information</h3>
-                    <input type="text" name="telp" placeholder="Nomor Telepon" class="w-full border bg-gray-200 rounded text-center p-2" value="{{ $user->telp }}" required>
-                </div>
+        {{-- @method('PUT') --}}
+
+        <div class="w-full h-24 mb-2 flex gap-4 items-start">
+            <img id="previewImage" src="{{ $user->fotoprofile ?? '/assets/illustration/profil.jpg' }}" alt="Profile Picture" class="w-24 h-full object-cover rounded-full">
+            <label for="fotoprofile" class="p-2 rounded-lg w-10 h-10"><img src="/assets/icon/edit.png" alt="Edit Profile"></label>
+            <input type="file" id="fotoprofile" name="fotoprofile" accept="image/*" class="hidden" onchange="previewImage(event)">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700" for="name">Full Name</label>
+            <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
+        </div>
+
+        <div class="flex gap-4 w-full">
+            <div class="mb-4 w-full">
+                <label class="block text-gray-700" for="telp">Phone Number</label>
+                <input type="text" id="telp" name="telp" value="{{ old('telp', $user->telp) }}" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
             </div>
 
-            <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md grid">
-                <h3 class="text-xl font-semibold mb-4">General Information</h3>
-                <textarea name="about" placeholder="About Me" class="w-full border bg-gray-200 rounded p-5 resize-none">{{ $user->about }}</textarea>
-
-                <select name="education_level_id" class="bg-gray-200 w-1/3 rounded mt-4 p-2" required>
-                    <option value="">Select Education Level</option>
-                    @foreach ($educations as $education)
-                        <option value="{{ $education->id }}" {{ $user->education_level_id == $education->id ? 'selected' : '' }}>
-                            {{ $education->education_level }}, {{ $education->education_year }} Year
-                        </option>
-                    @endforeach
-                </select>
-
-                <input type="date" name="tanggal_lahir" class="bg-gray-200 w-1/3 rounded mt-4 p-2" value="{{ $user->tanggal_lahir }}" required>
-
-                <div class="mt-4">
-                    <h4 class="font-semibold pb-2">CV (Curriculum Vitae)</h4>
-                    <input type="file" name="cv" accept=".pdf">
-                </div>
+            <div class="mb-4 w-full">
+                <label class="block text-gray-700" for="alamat">Address</label>
+                <input type="text" id="alamat" name="alamat" value="{{ old('alamat', $user->alamat) }}" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
             </div>
         </div>
-        <div class="p-6 rounded-lg shadow-md mt-4 bg-black">
-            <p class="text-white">Social Media</p>
-            <div class="flex space-x-4 mt-2">
-                <img class="w-6 h-6" src="/assets/icon/instagram.png" alt="Instagram">
-                <img class="w-6 h-6" src="/assets/icon/facebook.png" alt="Facebook">
-                <img class="w-6 h-6" src="/assets/icon/telegram.png" alt="Telegram">
-                <img class="w-6 h-6" src="/assets/icon/twitter.png" alt="Twitter">
-                <img class="w-6 h-6" src="/assets/icon/youtube.png" alt="Youtube">
-            </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700" for="tanggal_lahir">Date of Birth</label>
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir', $user->tanggal_lahir) }}" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
         </div>
-        <div class="flex flex-row mt-4 justify-between">
-            <button type="submit" class="bg-blue-500 text-white p-4 rounded text-2xl text-center">Save Changes</button>
-            <a href="{{ route('profile') }}" class="bg-red-500 text-white p-4 rounded text-2xl text-center">Cancel</a>
+
+        <div class="mb-4">
+            <label class="block text-gray-700" for="education_level_id">Education Level</label>
+            <select id="education_level_id" name="education_level_id" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
+                @foreach($educationLevels as $educationLevel)
+                    <option value="{{ $educationLevel->id }}" {{ (old('education_level_id', $user->education_level_id) == $educationLevel->id) ? 'selected' : '' }}>
+                        {{ $educationLevel->education_level }}, {{ $educationLevel->education_year }}{{ $addon[$educationLevel->education_year - 1] }} Year
+                    </option>
+                @endforeach
+            </select>
         </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700" for="about">About Me</label>
+            <textarea id="about" name="about" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">{{ old('about', $user->about) }}</textarea>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700" for="cv">Upload CV (PDF)</label>
+            <input type="file" id="cv" name="cv" class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
+        </div>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Update Profile</button>
+        <a href="/profile" class="bg-red-600 text-white px-4 py-2 rounded-lg">Cancel</a>
     </form>
 </div>
 @endsection
