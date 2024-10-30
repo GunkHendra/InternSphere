@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-gray-100 font-poppins pt-24 w-full h-full flex flex-col min-h-screen overflow-x-hidden">
+    <body class="bg-gray-100 font-poppins pt-16 w-full h-full flex flex-col min-h-screen overflow-x-hidden">
         @include('partials/navbar')
 
         <div class="flex-grow mb-6">

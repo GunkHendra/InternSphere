@@ -14,20 +14,20 @@
         <h2 class="text-2xl font-semibold mb-4">General Information</h2>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Full Name</h3>
-            <p>{{ $user->name ?? 'No name available' }}</p>
+            <p>{{ $user->name ?? 'No name provided' }}</p>
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">About Me</h3>
-            <p>{{ $user->about ?? 'No description available' }}</p>
+            <p>{{ $user->about ?? 'No description provided' }}</p>
         </div>
-        <div class="mb-4 border-b pb-2">
+        {{-- <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">CV</h3>
             @if($user->pdf)
                 <a href="{{ asset('storage/cv/'.$user->pdf) }}" class="text-blue-600 hover:underline" target="_blank">{{ $user->pdf }}</a>
             @else
                 <p>No CV available</p>
             @endif
-        </div>
+        </div> --}}
     </div>
 
     <!-- Personal Information Card -->
@@ -38,31 +38,46 @@
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Date of Birth</h3>
-            <p>{{ $user->tanggal_lahir ? \Carbon\Carbon::parse($user->tanggal_lahir)->format('d-m-Y') : 'No date of birth available' }}</p>
+            <p>{{ $user->tanggal_lahir ? \Carbon\Carbon::parse($user->tanggal_lahir)->format('d-m-Y') : 'No date of birth provided' }}</p>
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Age</h3>
-            <p>{{ $user->age ?? 'No age available' }}</p>
+            <p>
+                @if ($user->tanggal_lahir)
+                    @php
+                        $birthdate = strtotime($user->tanggal_lahir);
+                        $age = floor((time() - $birthdate) / (365 * 60 * 60 * 24)); // Calculate age in years
+                    @endphp
+                    {{ $age }} years old
+                @else
+                    No age provided
+                @endif
+            </p>
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Education</h3>
             <p>
-                {{ $educations->education_level ?? 'No education level available' }}
-                ({{ $educations->education_year . ' ' .'Year' ?? 'No year available' }})
+                @if ($educations === null)
+                    No education provided
+                @else
+                    {{ $educations->education_level}},
+                    {{ $educations->education_year}}{{ $addon[$educations->education_year-1] }} year
+                @endif
             </p>
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Phone Number</h3>
-            <p>{{ $user->telp ?? 'No phone number available' }}</p>
+            <p>{{ $user->telp ?? 'No phone number provided' }}</p>
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Email</h3>
-            <p>{{ $user->email ?? 'No email available' }}</p>
+            <p>{{ $user->email ?? 'No email provided' }}</p>
         </div>
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Address</h3>
-            <p>{{ $user->alamat ?? 'No address available' }}</p>
+            <p>{{ $user->alamat ?? 'No address provided' }}</p>
         </div>
     </div>
 </div>
+
 @endsection
