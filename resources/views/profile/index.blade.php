@@ -47,8 +47,8 @@
         <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">Education</h3>
             <p>
-                {{ $user->education_level->education_level ?? 'No education level available' }}
-                ({{ $user->education_level->education_year ?? 'No year available' }})
+                {{ $educations->education_level ?? 'No education level available' }}
+                ({{ $educations->education_year . ' ' .'Year' ?? 'No year available' }})
             </p>
         </div>
         <div class="mb-4 border-b pb-2">
