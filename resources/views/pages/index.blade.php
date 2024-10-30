@@ -5,7 +5,7 @@
 @extends('layouts/layout')
 
 @section('content')
-    <div class="flex h-[86vh] justify-center items-center mb-6">
+    <div class="flex min-h-screen justify-center items-center mb-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-10">
             <img class="max-w-56 max-h-56" src="/assets/logo.png" alt="Logo">
             <div class="space-y-5 text-center">
@@ -45,14 +45,25 @@
         </div>
     </div>
 
-    <div class="h-auto pt-16 lg:py-32 px-6">
-        <div class="flex justify-center mb-6">
-            <span class="text-2xl md:text-5xl font-bold">Check out some of our internships</span>
-        </div>
-        <hr class="mb-6 border border-black">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($internship as $intern)
-                <div class="p-4 bg-white shadow-md rounded-lg flex flex-col justify-between gap-4">
+    <style>
+    /* Tambahkan class untuk memperbesar card yang aktif */
+    .active-card {
+        transform: scale(1.10); /* Memperbesar sedikit */
+        transition: transform 0.1s ease;
+
+    }
+    </style>
+
+<div class="h-auto pt-16 lg:py-32 px-6">
+    <div class="flex justify-center mb-20">
+        <span class="text-2xl md:text-5xl font-bold">Check out some of our internships</span>
+    </div>
+
+    <!-- Swipeable Container -->
+    <div class="relative mt-10">
+        <div class="flex gap-8 px-8 transition-transform duration-300" id="internship-container">
+            @foreach ($internship as $index => $intern)
+                <div class="min-w-[400px] md:min-w-[450px] lg:min-w-[450px] p-4 bg-white shadow-md rounded-lg flex flex-col justify-between gap-4 {{ $index === 0 ? 'active-card' : '' }}">
                     <div>
                         <div class="flex items-center gap-4">
                             @if($intern->company && $intern->company->logo)
@@ -77,6 +88,82 @@
                 </div>
             @endforeach
         </div>
-        <hr class="my-6 border border-black">
+
+        <!-- Swipe Buttons -->
+        
+        <button id="prev-button" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200 transition">
+            <img src="{{ asset('assets/icon/Left.png') }}" alt="Left" class="w-6 h-6">
+        </button>
+        <button id="next-button" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200 transition">
+            <img src="{{ asset('assets/icon/Right.png') }}" alt="Right" class="w-6 h-6">
+        </button>
     </div>
+</div>
+
+<script>
+    const container = document.getElementById('internship-container');
+    const items = container.children;
+    const itemWidth = items[0].offsetWidth + 24; // Including gap between items
+    const visibleItems = Math.floor(window.innerWidth / itemWidth); // Number of items visible at once
+    let currentIndex = 0;
+    const maxIndex = items.length - visibleItems;
+    let intervalId;
+    let activeBoxIndex = 0; // Index untuk box yang membesar
+
+    function updateActiveCard() {
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove('active-card');
+        }
+        items[activeBoxIndex].classList.add('active-card');
+    }
+
+    function swipeNext() {
+        if (activeBoxIndex < currentIndex + 2) { // Perbesar box secara bertahap
+            activeBoxIndex++;
+        } else { // Setelah 3 box diperbesar, swipe ke kanan
+            activeBoxIndex = currentIndex;
+            currentIndex = (currentIndex < maxIndex) ? currentIndex + 1 : 0;
+            container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+        updateActiveCard();
+    }
+
+    function swipePrev() {
+        if (activeBoxIndex > currentIndex) {
+            activeBoxIndex--;
+        } else {
+            activeBoxIndex = currentIndex + 2;
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : maxIndex;
+            container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+        updateActiveCard();
+    }
+
+    function startAutoSwipe() {
+        intervalId = setInterval(swipeNext, 3000); // Setiap 3 detik perbesar satu box, swipe setelah 3 box
+    }
+
+    function stopAutoSwipe() {
+        clearInterval(intervalId);
+    }
+
+    document.getElementById('next-button').addEventListener('click', () => {
+        stopAutoSwipe();
+        swipeNext();
+        startAutoSwipe();
+    });
+
+    document.getElementById('prev-button').addEventListener('click', () => {
+        stopAutoSwipe();
+        swipePrev();
+        startAutoSwipe();
+    });
+
+    window.onload = startAutoSwipe;
+    window.addEventListener('resize', () => {
+        stopAutoSwipe();
+        startAutoSwipe();
+    });
+</script>
+
 @endsection

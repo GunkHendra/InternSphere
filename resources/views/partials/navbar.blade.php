@@ -1,4 +1,4 @@
- <nav class="bg-black fixed w-full top-0 flex justify-between items-center px-6 py-4 shadow-md text-sm">
+ <nav class="bg-black fixed w-full top-0 flex justify-between items-center px-8 py-4 shadow-md z-50">
   <a href="/" class="flex items-center" id="logo">
       <img src="{{ asset('assets/logo.png') }}" alt="Logo InternSphere" class="max-h-8 max-w-8">
       <span class="ml-4 text-white">{{ config('app.name', 'InternSphere') }}</span>
