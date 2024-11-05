@@ -35,7 +35,7 @@
 
         <div>
             <ul class="flex justify-between items-center gap-6 mb-2">
-                <li>About Us</li>
+                <li><a href="/about">About Us</a></li>
                 <li>Contact Us</li>
                 <li>Customer Support</li>
                 <li>Term & Condition</li>
