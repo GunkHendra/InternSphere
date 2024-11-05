@@ -35,7 +35,7 @@
 
         <div>
             <ul class="flex justify-between items-center gap-6 mb-2">
-                <li>About Us</li>
+                <li><a href="/about">About Us</a></li>
                 <li>Contact Us</li>
                 <li>Customer Support</li>
                 <li>Term & Condition</li>
@@ -83,7 +83,7 @@
 
         <div class="text-center">
             <ul class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <li><a href="#">About Us</a></li>
+                <li><a href="/about">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">Customer Support</a></li>
                 <li><a href="#">Terms & Conditions</a></li>

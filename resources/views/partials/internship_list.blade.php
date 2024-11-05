@@ -46,7 +46,6 @@
                 </span>
             </p>
             <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
-            <span class="text-sky-300">Read more >></span>
         </div>
     @endforeach
 </ul>
