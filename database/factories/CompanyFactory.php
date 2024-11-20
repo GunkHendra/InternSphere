@@ -21,12 +21,10 @@ class CompanyFactory extends Factory
 
     public function definition(): array
     {
-
         $companies = [
             'Apple' => 'apple_logo.png',
             'Google' => 'google_logo.png',
             'Facebook' => 'facebook_logo.png',
-
         ];
 
         $companyNames = array_keys($companies);

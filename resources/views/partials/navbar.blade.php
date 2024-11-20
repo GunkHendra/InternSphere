@@ -16,7 +16,6 @@
             <li><a href="/" class="{{ ($title === 'Home') ? 'text-white' : 'text-slate-400' }}">Home</a></li>
             <li><a href="/internship" class="{{ ($title === 'Internship') ? 'text-white' : 'text-slate-400' }}">Internship</a></li>
             <li><a href="/company" class="{{ ($title === 'Company') ? 'text-white' : 'text-slate-400' }}">Company</a></li>
-            {{-- <li><a href="/message" class="{{ ($title === 'Message') ? 'text-white' : 'text-slate-400' }}">Message</a></li> --}}
             @auth
             <li class="relative">
                 <button id="profile-dropdown-toggle" class="{{ ($title === 'Profile') ? 'text-white' : 'text-slate-400' }}">Profile</button>
@@ -31,6 +30,7 @@
                 </ul>
             </li>
             @else
+            <li><a href="/about" class="{{ ($title === 'About Us') ? 'text-white' : 'text-slate-400' }}">About Us</a></li>
             <li><a href="/login" class="{{ ($title === 'Login') ? 'text-white' : 'text-slate-400' }}">Login</a></li>
             @endauth
         </ul>

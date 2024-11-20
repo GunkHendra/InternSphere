@@ -68,7 +68,7 @@ class PagesController extends Controller
             'internship_id' => $internship->id,
         ]);
 
-        return redirect()->back()->with('success', 'Successfully applied for this internship!');
+        return redirect()->bacpk()->with('success', 'Successfully applied for this internship!');
     }
 
     public function company(){
@@ -111,23 +111,29 @@ class PagesController extends Controller
         ]);
     }
 
-    public function mynetwork(){
-        return view('pages/mynetwork', [
-            "title" => "My Network"
-        ]);
-    }
+    // public function mynetwork(){
+    //     return view('pages/mynetwork', [
+    //         "title" => "My Network"
+    //     ]);
+    // }
 
-    public function message(){
-        return view('pages/message', [
-            "title" => "Message",
-            "company" => Company::latest()->limit(1)->get(),
-        ]);
-    }
+    // public function message(){
+    //     return view('pages/message', [
+    //         "title" => "Message",
+    //         "company" => Company::latest()->limit(1)->get(),
+    //     ]);
+    // }
 
-    public function message_detail(){
-        return view('pages/message_detail', [
-            "title" => "Message",
-            "company" => Company::latest()->limit(1)->get(),
+    // public function message_detail(){
+    //     return view('pages/message_detail', [
+    //         "title" => "Message",
+    //         "company" => Company::latest()->limit(1)->get(),
+    //     ]);
+    // }
+
+    public function about(){
+        return view('pages/about', [
+            "title" => "About Us",
         ]);
     }
 

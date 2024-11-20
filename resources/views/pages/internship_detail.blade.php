@@ -49,7 +49,14 @@
             </form>
         </div>
         <hr class="my-2">
-        {!! $internship->description !!}
+        
+        <div class="description-container max-w-full">
+            <p id="description" class="description-text line-clamp-3">
+                {!! $internship->description !!}
+            </p>
+            <button id="readMore" class="text-blue-500 mt-2" onclick="toggleReadMore()">Read More</button>
+        </div>
+
 
         <p class="flex items-center justify-left gap-1">
             Rating: {{ $internship->averageRating() ? round($internship->averageRating(), 0) : 'No rating yet' }} / 5
@@ -107,4 +114,20 @@
         document.getElementById('applyForm').submit();
     });
 </script>
+
+<script>
+  function toggleReadMore() {
+    const description = document.getElementById('description');
+    const readMoreButton = document.getElementById('readMore');
+
+    if (description.classList.contains('line-clamp-3')) {
+      description.classList.remove('line-clamp-3');
+      readMoreButton.innerText = 'Read Less';
+    } else {
+      description.classList.add('line-clamp-3');
+      readMoreButton.innerText = 'Read More';
+    }
+  }
+</script>
+
 @endsection

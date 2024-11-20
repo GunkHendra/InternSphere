@@ -17,6 +17,7 @@ class CompanySeeder extends Seeder
         Company::create([
             'company_name' => 'Google',
             'slug' => 'google',
+            'description' => fake()->sentence(150),
             'logo' => 'Google_logo.png',
             'focus' => 'Technology',
             'email' => 'google@example.com',
@@ -27,6 +28,7 @@ class CompanySeeder extends Seeder
         Company::create([
             'company_name' => 'Facebook',
             'slug' => 'facebook',
+            'description' => fake()->sentence(150),
             'logo' => 'Facebook_Logo.png',
             'focus' => 'Technology',
             'email' => 'facebook@example.com',
@@ -37,6 +39,7 @@ class CompanySeeder extends Seeder
         Company::create([
             'company_name' => 'Apple',
             'slug' => 'apple',
+            'description' => fake()->sentence(150),
             'logo' => 'apple_logo.png',
             'focus' => 'Technology',
             'email' => 'apple@example.com',

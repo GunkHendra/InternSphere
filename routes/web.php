@@ -45,7 +45,5 @@ Route::post('/forgot-password', [LoginController::class, 'sendResetLink'])->name
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
-
-Route::get('/message_detail', [PagesController::class, 'message_detail']);
-
-
+// about
+Route::get('/about', [PagesController::class, 'about']);
