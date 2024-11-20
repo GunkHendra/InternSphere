@@ -27,7 +27,7 @@
 
 <ul id="internship-list">
     @foreach ($internship as $intern)
-        <div class="p-4 bg-white shadow-md rounded-lg @if (!$loop->last) mb-2 @endif cursor-pointer internship-item" onclick="showDetails('{{ $intern->id }}')" id="intern-{{ $intern->id }}">
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg @if (!$loop->last) mb-2 @endif cursor-pointer internship-item" onclick="showDetails('{{ $intern->id }}')" id="intern-{{ $intern->id }}">
             <div class="flex items-center gap-4 mb-2">
                 @if($intern->company && $intern->company->logo)
                     <img src="{{ asset('assets/logo/' . $intern->company->logo) }}" alt="{{ $intern->company->company_name }} logo" class="w-12 h-12">

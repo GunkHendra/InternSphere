@@ -21,15 +21,12 @@ class CompanyFactory extends Factory
 
     public function definition(): array
     {
-        // Daftar nama perusahaan dan logo yang sesuai
         $companies = [
             'Apple' => 'apple_logo.png',
             'Google' => 'google_logo.png',
             'Facebook' => 'facebook_logo.png',
-            // Tambahkan perusahaan lain jika diperlukan
         ];
 
-        // Pilih perusahaan secara acak dari daftar
         $companyNames = array_keys($companies);
         $companyName = $this->faker->unique()->randomElement($companyNames);
         $logo = $companies[$companyName];

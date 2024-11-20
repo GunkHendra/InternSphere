@@ -24,20 +24,20 @@
     </div>
 
     <div class="flex flex-col lg:flex-row h-auto lg:h-[100vh] justify-center items-center bg-black">
-        <div class="flex justify-center lg:justify-start mb-6 lg:mb-0">
+        <div class="flex justify-center lg:justify-start mb-6 lg:mb-0" data-aos="fade-right">
             <img class="w-[70%] lg:w-auto" src="assets/illustration/discus.png" alt="">
         </div>
         <div class="text-white p-6">
             <div class="space-y-10">
-                <div class="flex flex-col md:flex-row items-center gap-4">
+                <div class="flex flex-col md:flex-row items-center gap-4" data-aos="fade-left">
                     <img class="max-w-12 max-h-12" src="assets/icon/link.png" alt="">
                     <span class="text-lg md:text-4xl text-center md:text-left">Connects students with valuable internship opportunities.</span>
                 </div>
-                <div class="flex flex-col md:flex-row items-center gap-4">
+                <div class="flex flex-col md:flex-row items-center gap-4" data-aos="fade-left">
                     <img class="max-w-16 max-h-16" src="assets/icon/thumb.png" alt="">
                     <span class="text-lg md:text-4xl text-center md:text-left">Find the perfect internship to match your skills and ambitions.</span>
                 </div>
-                <div class="flex flex-col md:flex-row items-center gap-4">
+                <div class="flex flex-col md:flex-row items-center gap-4" data-aos="fade-left">
                     <img class="max-w-14 max-h-14" src="assets/icon/easy.png" alt="">
                     <span class="text-lg md:text-4xl text-center md:text-left">Easy access to internships.</span>
                 </div>
@@ -55,12 +55,12 @@
     </style>
 
 <div class="h-auto pt-16 lg:py-32 px-6">
-    <div class="flex justify-center mb-20">
+    <div class="flex justify-center mb-20" data-aos="fade-up">
         <span class="text-2xl md:text-5xl font-bold">Check out some of our internships</span>
     </div>
 
     <!-- Swipeable Container -->
-    <div class="relative mt-10">
+    <div class="relative mt-10" data-aos="fade-up">
         <div class="flex gap-8 px-8 transition-transform duration-300" id="internship-container">
             @foreach ($internship as $index => $intern)
                 <div class="min-w-[400px] md:min-w-[450px] lg:min-w-[450px] p-4 bg-white shadow-md rounded-lg flex flex-col justify-between gap-4 {{ $index === 0 ? 'active-card' : '' }}">
@@ -101,6 +101,7 @@
 </div>
 
 <script>
+    AOS.init();
     const container = document.getElementById('internship-container');
     const items = container.children;
     const itemWidth = items[0].offsetWidth + 24; // Including gap between items
@@ -118,9 +119,9 @@
     }
 
     function swipeNext() {
-        if (activeBoxIndex < currentIndex + 2) { // Perbesar box secara bertahap
+        if (activeBoxIndex < currentIndex + 3) { // Perbesar box secara bertahap
             activeBoxIndex++;
-        } else { // Setelah 3 box diperbesar, swipe ke kanan
+        } else { // Setelah 4 box diperbesar, swipe ke kanan
             activeBoxIndex = currentIndex;
             currentIndex = (currentIndex < maxIndex) ? currentIndex + 1 : 0;
             container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;

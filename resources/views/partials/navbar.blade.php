@@ -30,6 +30,7 @@
                 </ul>
             </li>
             @else
+            <li><a href="/about" class="{{ ($title === 'About Us') ? 'text-white' : 'text-slate-400' }}">About Us</a></li>
             <li><a href="/login" class="{{ ($title === 'Login') ? 'text-white' : 'text-slate-400' }}">Login</a></li>
             @endauth
         </ul>
