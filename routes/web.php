@@ -34,11 +34,13 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->mi
 Route::get('/edit_profile', [ProfileController::class, 'edit_profile'])->name('edit_profile')->middleware('auth');
 Route::post('/edit_profile', [ProfileController::class, 'update_profile'])->name('update_profile')->middleware('auth');
 
-// login register
+// login register lupa password
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/lupa_password', [LoginController::class, 'showForgotPasswordForm'])->name('password.request');
+Route::post('/forgot-password', [LoginController::class, 'sendResetLink'])->name('password.email');
 
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);

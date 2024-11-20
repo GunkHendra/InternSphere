@@ -53,7 +53,7 @@
   document.addEventListener('click', function(event) {
     const dropdown = document.getElementById('profile-dropdown');
     const toggle = document.getElementById('profile-dropdown-toggle');
-    
+
     if (!toggle.contains(event.target) && !dropdown.contains(event.target)) {
         dropdown.classList.add('hidden');
     }
