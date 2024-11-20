@@ -21,14 +21,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('about')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('telp')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('fotoprofile')->nullable();
+            $table->string('pdf')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
-            $table->string('about')->nullable()->default('About');
-            $table->date('tanggal_lahir')->nullable();
-            $table->string('telp')->nullable()->default('Nomor Telpon');
-            $table->string('alamat')->nullable()->default('Alamat');
-            $table->string('fotoprofile')->nullable()->default('Profile');
-            $table->string('pdf')->nullable()->default('CV');
             $table->timestamps();
         });
 

@@ -6,6 +6,17 @@
 @extends('layouts/layout')
 
 @section('content')
+<div id="confirmationModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-4">Confirm Application</h2>
+        <p>Are you sure you want to apply for this internship?</p>
+        <div class="mt-6 flex justify-end gap-4">
+            <button id="cancelButton" class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded">Cancel</button>
+            <button id="confirmButton" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Apply</button>
+        </div>
+    </div>
+</div>
+
 <div class="px-6">
     <div class="rounded-lg bg-white shadow-md p-4 mb-2">
         <div class="flex justify-between items-center">
@@ -20,12 +31,16 @@
                     <a class="text-slate-500" href="/company/{{ $internship->company->slug }}">By {{ $internship->company->company_name }}</a>
                 </div>
             </div>
-            <form action="/internship/apply/{{ $internship->id }}" method="POST">
+            {{-- <form action="{{ route('internship.apply', $internship->id) }}" method="POST"> --}}
+            <form action="/internship/apply/{{ $internship->id }}" method="POST" id="applyForm">
                 @csrf
                 @if ($isApplied === null)
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-7 rounded text-lg">
+                    {{-- <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Apply
-                    </button>
+                    </button> --}}
+                    <button type="button" id="applyButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Apply
+                    </button>                    
                 @else
                     <button type="button" class="bg-white border-2 border-blue-500 text-black py-3 px-6 rounded-lg text-lg" disabled>
                         Already Applied
@@ -93,17 +108,18 @@
         @if($internship->comments->isEmpty())
             <p>No comments yet. Be the first to comment!</p>
         @else
-            <div class="flex flex-col gap-4">
-                @foreach ($internship->comments as $comment)
-                <div class="@if (!$loop->last) border-b pb-4 @endif border-gray-200">
-                    <p><strong>{{ $comment->user->name }}</strong> <span class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span></p>
+        <div class="flex flex-col gap-4">
+            @foreach ($internship->comments as $comment)
+            <div class="@if (!$loop->last) border-b pb-4 @endif border-gray-200">
+                <p><strong>{{ $comment->user->name }}</strong> <span class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span></p>
                     <div class="flex items-center gap-2">
-                        <p>Rating: {{ $comment->rating }} / 5</p>
-                        <img src="{{ asset('assets/icon/' . $star[$comment->rating]) }}" alt="Star" class="w-35 h-10 inline-block">
+                    <p>Rating: {{ $comment->rating }} / 5</p>
+                    <!-- Menampilkan bintang di sebelah rating -->
+                    <img src="{{ asset('assets/icon/' . $star[$comment->rating]) }}" alt="Star" class="w-35 h-10 inline-block">
                     </div>
-                    <p>{{ $comment->comment }}</p>
-                </div>
-                @endforeach
+                <p>{{ $comment->comment }}</p>
+            </div>
+            @endforeach
         </div>
         @endif
     </div>
@@ -124,4 +140,33 @@
         white-space: normal;
     }
 </style>
+<script>
+    document.getElementById('applyButton').addEventListener('click', function () {
+        document.getElementById('confirmationModal').classList.remove('hidden');
+    });
+
+    document.getElementById('cancelButton').addEventListener('click', function () {
+        document.getElementById('confirmationModal').classList.add('hidden');
+    });
+
+    document.getElementById('confirmButton').addEventListener('click', function () {
+        document.getElementById('applyForm').submit();
+    });
+</script>
+
+<script>
+  function toggleReadMore() {
+    const description = document.getElementById('description');
+    const readMoreButton = document.getElementById('readMore');
+
+    if (description.classList.contains('line-clamp-3')) {
+      description.classList.remove('line-clamp-3');
+      readMoreButton.innerText = 'Read Less';
+    } else {
+      description.classList.add('line-clamp-3');
+      readMoreButton.innerText = 'Read More';
+    }
+  }
+</script>
+
 @endsection

@@ -21,7 +21,7 @@ class ProfileController extends Controller
     {
         return view('profile/edit_profile', [
             "title" => "Edit Profile",
-            "educations" => EducationLevel::all(),
+            "educationLevels" => EducationLevel::all(),
             "user" => Auth::user(),
         ]);
 
@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $user = Auth()->user();
 
         $request->validate([
-            'fotoprofile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'fotoprofile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
             'telp' => 'required|string|max:255',
@@ -55,10 +55,10 @@ class ProfileController extends Controller
         $user->tanggal_lahir = $request->tanggal_lahir;
 
 
-        if ($request->hasFile('fotoprofile')) {
-            $filePath = $request->file('fotoprofile')->store('profile_pictures', 'public');
-            $user->fotoprofile = '/storage/' . $filePath;
-        }
+        // if ($request->hasFile('fotoprofile')) {
+        //     $filePath = $request->file('fotoprofile')->store('profile_pictures', 'public');
+        //     $user->fotoprofile = '/storage/' . $filePath;
+        // }
 
         if ($request->hasFile('cv')) {
             $cvPath = $request->file('cv')->store('cvs', 'public');

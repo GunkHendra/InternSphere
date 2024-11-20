@@ -30,13 +30,11 @@ class User extends Authenticatable
         ];
     }
 
-    // Relasi ke model Appliance
     public function appliance()
     {
         return $this->hasMany(Appliance::class);
     }
 
-    // Relasi ke model Comment
     public function comments()
     {
         return $this->hasMany(Comment::class);

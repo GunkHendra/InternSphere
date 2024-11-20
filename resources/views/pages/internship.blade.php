@@ -7,8 +7,8 @@
 @section('content')
     <div class="mb-3 px-6">
         <form action="/internship" method="GET" class="flex items-center justify-between">
-            <input type="text" class="border border-gray-200 bg-white text-sm rounded-lg w-full ps-4 py-2.5" placeholder="Search" name="search" value="{{ request('search') }}"/>
-            <button type="submit" class="border border-gray-200 bg-white p-3 ml-2 text-sm rounded-lg">
+            <input type="text" class="bg-gray-50 rounded-lg p-4 shadow-lg text-sm border border-gray-150 w-full" placeholder="Search" name="search" value="{{ request('search') }}"/>
+            <button type="submit" class="bg-gray-50 rounded-lg shadow-lg text-sm border border-gray-150 p-4 ml-2">
                 <img class="w-4 h-4" src="assets/search.png" alt="search-icon">
             </button>
         </form>
@@ -23,7 +23,7 @@
             @endif
             <ul id="internship-list">
                 @foreach ($internship as $intern)
-                    <div class="p-4 bg-white shadow-md rounded-lg @if (!$loop->last) mb-2 @endif cursor-pointer internship-item" onclick="showDetails('{{ $intern->id }}')" id="intern-{{ $intern->id }}">
+                    <div class="bg-gray-50 rounded-lg p-8 shadow-lg @if (!$loop->last) mb-4 @endif cursor-pointer internship-item" onclick="showDetails('{{ $intern->id }}')" id="intern-{{ $intern->id }}">
                         <div class="flex items-center gap-4 mb-2">
                             @if($intern->company && $intern->company->logo)
                                 <img src="{{ asset('assets/logo/' . $intern->company->logo) }}" alt="{{ $intern->company->company_name }} logo" class="w-12 h-12">
@@ -34,7 +34,7 @@
                         </div>
                         <li><a href="/company/{{ $intern->company->slug }}" class="text-slate-500">By {{ $intern->company->company_name }}</a></li>
                         <hr class="my-2">
-                        <li><p class="text-sm md:text-base line-clamp-3">{{ $intern->description }}</p></li>
+                        <li><a href="/internship/{{ $intern->slug }}" class="text-sm md:text-base line-clamp-3">{{ $intern->description }}</a></li>
 
                         <p class="flex items-center justify-left gap-1">
                             Rating: {{ $intern->averageRating() ? round($intern->averageRating(), 0) : 'No rating yet' }} / 5
@@ -44,7 +44,7 @@
                         </p>
 
                         <p class="text-sm">{{ $intern->commentsCount() }} comments</p>
-                        <span class="text-sky-300">Read more >></span>
+                        
                     </div>
                 @endforeach
             </ul>

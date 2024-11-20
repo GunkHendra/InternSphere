@@ -43,7 +43,5 @@ Route::post('/register', [RegisterController::class, 'store']);
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
-
-Route::get('/message_detail', [PagesController::class, 'message_detail']);
-
-
+// about
+Route::get('/about', [PagesController::class, 'about']);
