@@ -6,6 +6,17 @@
 @extends('layouts/layout')
 
 @section('content')
+<div id="confirmationModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-4">Confirm Application</h2>
+        <p>Are you sure you want to apply for this internship?</p>
+        <div class="mt-6 flex justify-end gap-4">
+            <button id="cancelButton" class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded">Cancel</button>
+            <button id="confirmButton" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Apply</button>
+        </div>
+    </div>
+</div>
+
 <div class="px-6">
     <div class="rounded-lg bg-white shadow-md p-4 mb-2">
         <div class="flex flex-col md:flex-row justify-between items-center">
@@ -67,6 +78,7 @@
     </div>
 
     <!-- Comment and Rating Form -->
+    @if($isApplied !== null)  <!-- Check if user has applied -->
     <div class="rounded-lg bg-white shadow-md p-4 mb-4">
         <h3 class="font-medium text-2xl mb-4">Add a Comment and Rating</h3>
         <form action="/internship/comment/{{ $internship->id }}" method="POST">
@@ -74,7 +86,7 @@
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">Rating:</label>
                 <div class="flex gap-2">
-                    @for($i = 1; $i <= 1; $i++)
+                    @for($i = 1; $i <= 5; $i++)
                         <input type="radio" id="rating-{{ $i }}" name="rating" value="{{ $i }}" required>
                         <label for="rating-{{ $i }}">
                             <img src="{{ asset('assets/icon/Star_Full.png') }}" alt="Star" class="inline w-30 h-10">
@@ -91,6 +103,11 @@
             </button>
         </form>
     </div>
+    @else
+    <div class="rounded-lg bg-white shadow-md p-4 mb-4">
+        <p class="text-gray-500">You must apply for the internship before commenting and rating.</p>
+    </div>
+    @endif
 
     <!-- Comments Section -->
     <div class="rounded-lg bg-white shadow-md p-4">
@@ -114,8 +131,6 @@
         @endif
     </div>
 </div>
-
-
 
 <!-- Script for Read More/Show Less -->
 <script>
