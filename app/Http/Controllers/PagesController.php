@@ -68,7 +68,7 @@ class PagesController extends Controller
             'internship_id' => $internship->id,
         ]);
 
-        return redirect()->bacpk()->with('success', 'Successfully applied for this internship!');
+        return redirect()->back()->with('success', 'Successfully applied for this internship!');
     }
 
     public function company(){
