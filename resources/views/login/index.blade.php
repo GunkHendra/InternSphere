@@ -43,7 +43,12 @@
             </div>
             <input type="submit" class="w-full bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-lg" value="Login"></input>
           </form>
-          <small>Not registered? <a href="/register" class="text-blue-500">Let's register!</a></small>
+          <small>
+            Not registered?
+            <a href="/register" class="text-blue-500">Let's register!</a>
+
+            <a href="/lupa_password" class="text-blue-500">Forgot Password?</a>
+          </small>
         </div>
       </div>
     </body>

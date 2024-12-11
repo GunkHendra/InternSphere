@@ -41,10 +41,10 @@
             <p class="mt-4 text-gray-600">
             Discover internships across a variety of fields offered by reputable companies worldwide. From tech and finance to media and education, InternSphere connects you with opportunities that align with your career goals. Start building valuable skills and real-world experience with companies committed to helping you grow.
             </p>
-    
+
     </div>
 
-    
+
     <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
         <h3 class="text-2xl font-semibold text-gray-900">Student-Friendly Interface</h3>
         <p class="mt-4 text-gray-600">
@@ -54,6 +54,4 @@
     </div>
   </div>
 </div>
-
-
 @endsection

@@ -9,7 +9,7 @@
     <!-- General Information Card -->
     <div class="w-1/2 bg-white shadow-md rounded-lg p-6 mr-4">
         <div class="mb-4 pb-2 w-full flex justify-center">
-            <img class="w-32 h-32 rounded-full mt-2" src="{{ $user->fotoprofile ?? '/assets/illustration/profil.jpg' }}" alt="Profile Picture">
+            <img class="w-32 h-32 rounded-full mt-2" src="{{ $user->fotoprofile ? asset('storage/' . $user->fotoprofile) : '/assets/illustration/profil.jpg' }}" alt="Profile Picture">
         </div>
         <h2 class="text-2xl font-semibold mb-4">General Information</h2>
         <div class="mb-4 border-b pb-2">
@@ -20,14 +20,14 @@
             <h3 class="text-gray-700">About Me</h3>
             <p>{{ $user->about ?? 'No description provided' }}</p>
         </div>
-        {{-- <div class="mb-4 border-b pb-2">
+        <div class="mb-4 border-b pb-2">
             <h3 class="text-gray-700">CV</h3>
             @if($user->pdf)
-                <a href="{{ asset('storage/cv/'.$user->pdf) }}" class="text-blue-600 hover:underline" target="_blank">{{ $user->pdf }}</a>
+                <a href="{{ asset('storage/' . $user->pdf) }}" class="text-blue-600 hover:underline" download>Download CV</a>
             @else
                 <p>No CV available</p>
             @endif
-        </div> --}}
+        </div>
     </div>
 
     <!-- Personal Information Card -->
