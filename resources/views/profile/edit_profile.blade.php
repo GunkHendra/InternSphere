@@ -13,7 +13,7 @@
 
         <!-- Bagian Edit Foto Profil -->
         <div class="w-full h-24 mb-7 flex gap-4 items-start justify-center">
-             <img id="previewImage" src="{{ asset('storage/' . $user->fotoprofile) ?? '/assets/illustration/profil.jpg' }}" alt="Profile Picture" class="w-32 h-32 object-cover rounded-full">
+             <img id="previewImage" src="{{ $user->fotoprofile ? asset('storage/' . $user->fotoprofile) : '/assets/illustration/profil.jpg' }}" alt="Profile Picture" class="w-32 h-32 object-cover rounded-full">
             <label for="fotoprofile" class="p-2 rounded-lg w-10 h-10 cursor-pointer">
                 <img src="/assets/icon/edit.png" alt="Edit Profile">
             </label>

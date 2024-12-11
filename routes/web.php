@@ -40,7 +40,12 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/lupa_password', [LoginController::class, 'showForgotPasswordForm'])->name('password.request');
-Route::post('/forgot-password', [LoginController::class, 'sendResetLink'])->name('password.email');
+Route::post('/sendOtp', [LoginController::class, 'sendOtp']);
+Route::get('/verifyOtp', [LoginController::class, 'showVerifyOtpForm']);
+Route::post('/verifyOtp', [LoginController::class, 'verifyOtp']);
+Route::get('/resetPasswordForm', [LoginController::class, 'showResetPasswordForm']);
+Route::post('/resetPassword', [LoginController::class, 'resetPassword'])->name('password.reset');
+
 
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
